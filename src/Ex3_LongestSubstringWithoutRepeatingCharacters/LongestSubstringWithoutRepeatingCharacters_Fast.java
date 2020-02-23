@@ -1,5 +1,13 @@
 package Ex3_LongestSubstringWithoutRepeatingCharacters;
 
+/*
+Here the fast implementation's method is about traverse the char[],
+each time, we store a 'left' pointer, to store current unrepeated-string's start point,
+each iteration (traversing char[]), we start traverse from 'left' to the one before current
+tail. By using this INSIDE LOOPS, would faster than using CONTAINS in String. BUT, in Python,
+Using CONTAINS would be the fastest method.
+ */
+
 public class LongestSubstringWithoutRepeatingCharacters_Fast {
     public int lengthOfLongestSubstring(String s) {
         if (s == null || s.length() == 0)
