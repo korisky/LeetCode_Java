@@ -1,12 +1,24 @@
 package Ex15_3Sum;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /*
 The self-implement of the fastest method.
 Key point: -neg/2 as a pointer, we fixed this neg and keep traverse possible PosNum from this pointer,
  */
+
+/*
+Steps:
+    1. count how many pos & neg numbers
+    2. big array for pos and neg numbers + count their frequency. !!! we don't add same number TWICE.
+    3. sort neg & pos arr
+    4. if zeros more than 3 add
+    5. for neg from high2low, add a pointer, for pos from low2high
+    6. if neg <= looking (-pos-neg) <= pos ... add
+    7. if looking > pos, continue
+    8. if looking < neg, -> pos > -2*neg, break, we need much 'negative' one
+ */
+
 
 /*
 IMPs:   1.1 if curNegVal <= looking <= curPosVal, it's really easy to understand
