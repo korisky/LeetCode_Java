@@ -3,7 +3,13 @@ package Ex15_3Sum;
 import java.util.*;
 
 /*
-still need time to understand this algorithm
+Generally, this program's method is similar to the 'fast' + 'fastest in python' combination,
+But, it use a much quickly stuff:
+each time, we traverse from decreasing order in NegNums and increasing order in PosNums.
+Further more, in the loop of NegNums, before it call PosNum's loop, it would do : Math.abs(neg)/2
+which means: we only looking the Positive nums, that is at least greater than |neg/2| Also, afterthat
+we keep updating this stating point, because we traverse the NegNums in decreasing order, only bigger
+PosNums can be using.
  */
 
 public class ThreeSum_Fastest {
@@ -45,7 +51,8 @@ public class ThreeSum_Fastest {
         posSize = 0;
         for (int v : nums) {
             if (v >= minValue && v <= maxValue) {
-                if (map[v - minValue]++ == 0) {
+                if (map[v - minValue]++ == 0) { // first time we meet this value,
+                                                    // we add 1 to it and add it to pos / neg arr
                     if (v > 0)
                         poses[posSize++] = v;
                     else if (v < 0)
@@ -58,7 +65,7 @@ public class ThreeSum_Fastest {
         int basej = 0;
         for (int i = negSize - 1; i >= 0; i--) {
             int nv = negs[i];
-            int minp = (-nv) >>> 1;
+            int minp = (-nv) >>> 1; // get it's binary num and move 1 digit without sign
             while (basej < posSize && poses[basej] < minp)
                 basej++;
             for (int j = basej; j < posSize; j++) {
@@ -83,8 +90,8 @@ public class ThreeSum_Fastest {
     }
 
     public static void main(String[] args) {
-        ThreeSum_Fast use = new ThreeSum_Fast();
-        int[] test = new int[]{-1, 1, 0};
+        ThreeSum_Fastest use = new ThreeSum_Fastest();
+        int[] test = new int[]{-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0};
         System.out.println(use.threeSum(test));
     }
 }
