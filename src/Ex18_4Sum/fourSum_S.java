@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+    Just really similar to the Three sum closest, but also really fast
+ */
+
 public class fourSum_S {
     private List<List<Integer>> results;
     public List<List<Integer>> fourSum(int[] nums, int target) {
