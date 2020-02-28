@@ -6,7 +6,6 @@ IMP: 1. for merging two lists, we MUST use a new list, to store their nodes !!!!
      MergeSort can be implemented in ANY situation (such as this LIST stuff)
  */
 
-
 public class mergeKLists_S_Faster {
     public static class ListNode {
         int val;
