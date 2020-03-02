@@ -57,7 +57,6 @@ public class nextPermutation_S {
         }
     }
 
-
     public static void main(String[] args) {
         nextPermutation_S use = new nextPermutation_S();
         int[] test = new int[]{3, 8, 15, 10, 6, 5, 3, 2, 1};
