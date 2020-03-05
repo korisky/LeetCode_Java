@@ -1,4 +1,4 @@
-package Ex48_TrappingRainWater;
+package Ex42_TrappingRainWater;
 
 /*
 Using the method from LeetCode,
