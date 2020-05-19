@@ -7,6 +7,17 @@ package Ex1_to_30.Ex1_TwoSum;
 import java.util.HashMap;
 
 public class TwoSum_Fast {
+
+    /*
+    Instead of comparing them one by one,
+    each time we meet a new number, we add a value (target - it's value)
+    as key, and this number's index to the HashMap,
+
+    Once we encounter a new number, we call containsKey method to check
+    whether it is some other number's remaining value. It it is, it must be contain
+    in the HashMap already.
+     */
+
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> remains = new HashMap<>();
         for (int i = 0; i < nums.length; i++){
