@@ -13,6 +13,11 @@ package Ex1_to_30.Ex2_AddTwoNum;
 // thus, when we traversing l1 and l2, we only point to their next
 // when current l1 or l2 is not NULL
 
+// What's more, we can use:
+// ListNode cur_node = new ListNode(xxx);
+// ListNode pointer
+// to use a pointer to point to the 'head' that might be the result we need to return
+
 public class addTwoNums {
     public class ListNode {
         int val;
