@@ -14,7 +14,7 @@ public class ZigZag_Fast {
     public String convert(String s, int numRows) {
         if (numRows == 1 || numRows >= s.length())
             return s;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int row = 0; row < numRows; row++){
             int pos = row;
             if (pos >= s.length())
