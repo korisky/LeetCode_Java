@@ -43,10 +43,10 @@ public class ThreeSum_Fastest_Simulating {
         int negLen = 0;
 
         for (int n : nums) { // O(n)
-            if (n > 0)
-                posLen++;
-            else if (n < 0)
+            if (n < 0)
                 negLen++;
+            else if (n > 0)
+                posLen++;
             else
                 zeroNums++;
         }
@@ -62,48 +62,58 @@ public class ThreeSum_Fastest_Simulating {
         posLen = 0;
         negLen = 0;
         for (int n : nums) { // O(n)
-            if (freqArr[maxVal + n]++ == 0){
+            if (freqArr[maxVal + n]++ == 0) { // we use maxVal + n to store stuff as their value
+                // this would be much useful once we meet a negative number
                 if (n > 0)
                     posNums[posLen++] = n;
                 else if (n < 0)
                     negNums[negLen++] = n;
             }
         }
-        Arrays.sort(posNums, 0, posLen); // O(nlogn)
-        Arrays.sort(negNums, 0, negLen);
 
-        int bigEnPosIn = 0;
-        for (int ng_idex = negLen - 1; ng_idex >= 0; ng_idex--) { // O(n/2)
-            int curNegVal = negNums[ng_idex];
-            int minPos = (-curNegVal) >>> 1;
-            while (bigEnPosIn < posLen && posNums[bigEnPosIn] < minPos) {
-                bigEnPosIn++;
-            }
-            for (int pos_idex = bigEnPosIn; pos_idex < posLen; pos_idex++) { //O(n/2)
-                int curPosVal = posNums[pos_idex];
-                int looking = -curPosVal - curNegVal;
-                if (looking >= curNegVal && looking <= curPosVal) {
-                    if (looking == curNegVal) {
-                        if (freqArr[curNegVal + maxVal] > 1)
-                            result.add(Arrays.asList(curNegVal, curNegVal, curPosVal));
-                    } else if (looking == curPosVal) {
-                        if (freqArr[curPosVal + maxVal] > 1)
-                            result.add(Arrays.asList(curNegVal, curPosVal, curPosVal));
-                    } else if (freqArr[looking + maxVal] > 0) {
-                        result.add(Arrays.asList(curNegVal, looking, curPosVal));
-                    }
-                } else if (looking < curNegVal){
-                    break;
+        Arrays.sort(posNums, 0, posLen); // Careful!!! only 0 - posLen is reasonable!!!!
+        // otherwise, we would count additional 0 in it
+        Arrays.sort(negNums, 0, negLen); // O(nlogn)
+
+        int bigEnoughPosIndex = 0;
+        for (int neg_index = negLen - 1; neg_index >= 0; neg_index--) { // O(n/2)
+            int curNegVal = negNums[neg_index];
+            int minimumPos = (-curNegVal) >>> 1; // effectively divide curNegVal by 2
+            while (bigEnoughPosIndex < posLen && posNums[bigEnoughPosIndex] < minimumPos)
+                bigEnoughPosIndex++;
+
+            for (int pos_index = bigEnoughPosIndex; pos_index < posLen; pos_index++) { //O(n/2)
+                int curPosVal = posNums[pos_index];
+                int lookingVal = -curPosVal - curNegVal; // looking + curPosVal + curNegVal == 0
+
+                if (lookingVal < curNegVal)
+                    break; // cause we traversing negative numbers decreasingly, which means
+                    // we would not search a valid solution in this loop, must break
+                else if (lookingVal > curPosVal)
+                    continue; // cause we traversing positive number increasingly, that means
+                    // we should just jump to next slightly bigger positive number
+                else {
+                    // here looking is in [curNegVal, curPosVal]
+                    if (lookingVal == curNegVal && freqArr[curNegVal + maxVal] > 1)
+                        // e.g. [-1, -1, 2]
+                        result.add(Arrays.asList(curNegVal, curNegVal, curPosVal));
+                    else if (lookingVal == curPosVal && freqArr[curPosVal + maxVal] > 1)
+                        // e.g. [-4, 2, 2]
+                        result.add(Arrays.asList(curNegVal, curPosVal, curPosVal));
+                    else if (lookingVal != curNegVal && lookingVal != curPosVal
+                            && freqArr[lookingVal + maxVal] > 0)
+                        // e.g. [-5, 1, 4] or [-3, -2, 5]
+                        result.add(Arrays.asList(curNegVal, lookingVal, curPosVal));
+                    // we have no more situation that is valid solution
                 }
             }
-
         }
         return result;
     }
 
     public static void main(String[] args) {
         ThreeSum_Fastest_Simulating use = new ThreeSum_Fastest_Simulating();
-        int[] test = new int[]{-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0};
+        int[] test = new int[]{1, 1, -2};
         System.out.println(use.threeSum(test));
     }
 }
