@@ -2,7 +2,7 @@ package Ex1_to_30.Ex7_ReverseInteger;
 
 public class Reverse {
     public int reverse(int x) {
-        StringBuffer sb = new StringBuffer(String.valueOf(x));
+        StringBuilder sb = new StringBuilder(String.valueOf(x));
         sb.reverse();
         if (sb.charAt(sb.length() - 1) == '-'){
             Long result = - Long.parseLong(sb.substring(0, sb.length() - 1));

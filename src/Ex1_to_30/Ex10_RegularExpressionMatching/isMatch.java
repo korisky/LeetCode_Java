@@ -16,9 +16,12 @@ public class isMatch {
                 if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.')
                     table[i][j] = table[i - 1][j - 1]; // it would be true if is it true so far
                 else if (p.charAt(j - 1) == '*') {
-                    table[i][j] = table[i][j - 2];
+                    table[i][j] = table[i][j - 2]; // 1. the situation that we use * as 0 times
                     if (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.')
-                        table[i][j] = table[i][j] || table[i - 1][j];
+                        // 2. in situations that we use * at least once (containing sub-situations like
+                        // a. p: .*    b. p: a*   s: aa)
+                        table[i][j] = table[i][j] || table[i - 1][j];// select one situation that really happened
+                    // here table[i-1][j]
                 }
             }
         }
