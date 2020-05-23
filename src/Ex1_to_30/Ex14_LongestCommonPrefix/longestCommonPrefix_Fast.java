@@ -10,19 +10,20 @@ Main points:
 
 public class longestCommonPrefix_Fast {
     public String longestCommonPrefix(String[] strs) {
-        if (strs.length == 0 || strs == null)
+
+        if (strs == null || strs.length == 0)
             return "";
         if (strs.length == 1)
             return strs[0];
 
-        String preFix = strs[0];
-        for (String str: strs){
-            while (!str.startsWith(preFix)){
-                if (preFix.length() == 1)
+        StringBuilder pre = new StringBuilder(strs[0]);
+        for (String str : strs) {
+            while (!str.startsWith(pre.toString())) {
+                if (pre.length() == 1)
                     return "";
-                preFix = preFix.substring(0, preFix.length() - 1);
+                pre.delete(pre.length() - 1, pre.length());
             }
         }
-        return preFix;
+        return pre.toString();
     }
 }
