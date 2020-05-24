@@ -11,29 +11,28 @@ IMP:    1. we can get Combination (cartitian product), by using depth-first-sear
 
 public class LetterCombinations_Fast {
 
-    private ArrayList<String> combs;
-    public static String[] dict = new String[]{"abc", "def", "ghi",
+    private ArrayList<String> combins;
+    public static String[] dict = new String[]{"", "", "abc", "def", "ghi",
             "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     public List<String> letterCombinations(String digits) {
-        combs = new ArrayList<>();
         if (digits == null || digits.length() == 0)
-            return combs;
-        char[] digitArr = digits.toCharArray();
-        dfsOnDigits(digitArr, 0, new StringBuffer());
-        return combs;
+            return new ArrayList<>();
+        combins = new ArrayList<>();
+        dfsOnDigits(digits, new StringBuilder());
+        return combins;
     }
 
-    public void dfsOnDigits(char[] digits, int curSlot, StringBuffer partComb) {
-        if (partComb.length() == digits.length){
-            combs.add(partComb.toString());
+    public void dfsOnDigits(String input, StringBuilder curComb) {
+        if (input.length() == curComb.length()) {
+            combins.add(curComb.toString());
             return;
         }
-        String curChoices = dict[Character.getNumericValue(digits[curSlot]) - 2];
-        for (char val : curChoices.toCharArray()){
-            partComb.append(val);
-            dfsOnDigits(digits, curSlot + 1, partComb);
-            partComb.deleteCharAt(partComb.length() - 1);
+        int curDigit = input.charAt(curComb.length()) - '0';
+        for (char c : dict[curDigit].toCharArray()) {
+            curComb.append(c);
+            dfsOnDigits(input, curComb);
+            curComb.deleteCharAt(curComb.length() - 1);
         }
     }
 
