@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-By using recursion to find out all posible combinations
+By using recursion to find out all possible combinations
 we got three situations :
                 1. ( and ) 's number all equal to n, we need to record it
                 2. ('s num equal to n, but we still get ), we need to parse all )
@@ -15,25 +15,28 @@ we got three situations :
 
 public class generateParentheses_S {
     private List<String> stores;
+
     public List<String> generateParenthesis(int n) {
         stores = new ArrayList<>();
         if (n > 0)
-            pushBra(n, n, new StringBuffer());
+            pushBra(n, n, new StringBuilder());
         return stores;
     }
-    public void pushBra(int leftRemaining, int rightRemaining, StringBuffer sb) {
+
+    public void pushBra(int leftRemaining, int rightRemaining, StringBuilder sb) {
         if (leftRemaining == 0 && rightRemaining == 0) {
             stores.add(sb.toString());
-        } else if (leftRemaining == 0 && rightRemaining != 0) {
+        } else if (leftRemaining == 0) {
             pushBra(leftRemaining, rightRemaining - 1, sb.append(")"));
             sb.deleteCharAt(sb.length() - 1);
-        } else if (leftRemaining != 0 && rightRemaining != 0 && leftRemaining <= rightRemaining) {
+        } else if (rightRemaining != 0 && leftRemaining <= rightRemaining) {
             pushBra(leftRemaining - 1, rightRemaining, sb.append("("));
             sb.deleteCharAt(sb.length() - 1);
             pushBra(leftRemaining, rightRemaining - 1, sb.append(")"));
             sb.deleteCharAt(sb.length() - 1);
         }
     }
+
     public static void main(String[] args) {
         generateParentheses_S use = new generateParentheses_S();
         List<String> results = use.generateParenthesis(1);
