@@ -17,8 +17,9 @@ public class mergeTwoSortedLists_S {
             return l1;
         ListNode preHead = new ListNode(0);
         ListNode pointer = preHead;
-        while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
+
+        while(l1 != null && l2 != null){
+            if (l1.val < l2.val){
                 pointer.next = l1;
                 l1 = l1.next;
             } else {
@@ -27,16 +28,13 @@ public class mergeTwoSortedLists_S {
             }
             pointer = pointer.next;
         }
-        while (l1 != null) {
+
+        if (l1 != null)
             pointer.next = l1;
-            l1 = l1.next;
-            pointer = pointer.next;
-        }
-        while (l2 != null) {
+
+        if (l2 != null)
             pointer.next = l2;
-            l2 = l2.next;
-            pointer = pointer.next;
-        }
+
         return preHead.next;
     }
 }
