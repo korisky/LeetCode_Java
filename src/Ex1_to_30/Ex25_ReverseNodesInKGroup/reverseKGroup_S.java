@@ -21,38 +21,28 @@ public class reverseKGroup_S {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null)
             return null;
-
-        // do counting first
-        ListNode temp = head;
-        int listLength = 0;
-        boolean longEnough = false;
-        while (temp != null) {
-            listLength++;
-            if (listLength > k) { /////////// special situation!!!!!
-                                    //////// If we use listLength++ in if statement instead of current code
-                                    /////// we cannot get full reverse.
-                longEnough = true;
-                break;
-            }
-            temp = temp.next;
+        ListNode countLen = head;
+        int len = 0;
+        while (countLen != null) { // we must go all the way to the end
+                                // otherwise, issue happen
+            len++;
+            countLen = countLen.next;
         }
-
-        if (!longEnough)
+        if (len < k)
             return head;
-
-        // then we need to reverse it
-        // we need to do the reverse every k's part
-        ListNode curNode = head;
-        ListNode preNode = null;
+        // else, we need to reverse it
+        ListNode cur = head;
+        ListNode pre = null;
         int count = 0;
-        while (curNode != null && count++ < k) {
-            ListNode nextNode = curNode.next;
-            curNode.next = preNode;
-            preNode = curNode;
-            curNode = nextNode;
+        while (cur != null && count < k) {
+            count++;
+            ListNode nextNode = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = nextNode;
         }
-        head.next = reverseKGroup(curNode, k);
-        return preNode;
+        head.next = reverseKGroup(cur, k);
+        return pre;
     }
 
 
