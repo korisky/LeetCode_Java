@@ -26,11 +26,13 @@ public class mergeKLists_S_Faster {
 
     public ListNode merge(ListNode[] lists, int start, int end) {
         if (start == end)
-            return lists[start];
+            return lists[start]; // Here must use start rather than 0, because we didn't change lists
+
         ListNode l1 = merge(lists, start, (start + end) / 2);
         ListNode l2 = merge(lists, (start + end) / 2 + 1, end);
         ListNode curMergeList = new ListNode(0);
         ListNode pointer = curMergeList;
+
         while (l1 != null && l2 != null) {
             if (l1.val < l2.val) {
                 pointer.next = l1;
