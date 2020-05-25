@@ -1,9 +1,13 @@
 package Ex31_NextPermutation;
 
-import com.sun.deploy.util.ArrayUtil;
-
-import java.util.Arrays;
-import java.util.Collections;
+/*
+The main idea is:
+    1. First we need to find the Peek Left, from right to left
+    2. Then go right from the Peek Left, find the SMALLEST element that just
+        greater than Peek Left, called as Peek Right.
+    3. Then Swap these 2 elements, after that, from PeekLeft + 1,
+        we need to reverse the remaining to the tail by "head-tail swapping"
+ */
 
 public class nextPermutation_S {
     public void nextPermutation(int[] nums) {
@@ -24,8 +28,11 @@ public class nextPermutation_S {
         for (int j = peekLeft + 1; j < nums.length; j++) {
             // we might miss this situation: 8,15,10,9,6,4
             // here if we just switch 8 and 15 would be wrong, we need to switch 8 and 9
-            if (nums[j] > nums[peekLeft] && nums[j] <= nums[peekRight])
+            if (nums[j] > nums[peekLeft] && nums[j] <= nums[peekRight]){
                 peekRight = j;
+                break;
+            }
+
         }
 
         // 3. after we find out the CORRECT eles for swapping
