@@ -11,22 +11,20 @@ public class search_S {
             return -1;
         int start = 0;
         int end = nums.length - 1;
-        int mid = 0;
+        int mid;
         while (start <= end) {
             mid = (end + start) / 2;
             if (nums[mid] == target)
                 return mid;
             if (nums[start] <= nums[mid]) {
-                // if currently start -> mid is an increasing sequence
+                // start -> mid is an increasing sequence
                 if (target >= nums[start] && target < nums[mid])
-                    // target is inside this increasing sequence
                     end = mid - 1;
                 else
-                    // target must in decreasing sequence
                     start = mid + 1;
             } else {
-                // currently mid -> end is an increasing sequence
-                if (target > nums[mid] && target <= nums[end])
+                // start -> mid contains rotated elements
+                if (target >= nums[mid] && target < nums[start])
                     start = mid + 1;
                 else
                     end = mid - 1;
