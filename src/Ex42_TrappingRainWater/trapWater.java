@@ -15,6 +15,33 @@ Using the method from LeetCode,
 
 public class trapWater {
     public int trap(int[] height) {
+
+//      // Much more clear version, which is 1ms slower then the below one
+//        int[] fromLeft = new int[height.length];
+//        int[] fromRight = new int[height.length];
+//
+//        int lmax = 0;
+//        for (int l = 0; l < height.length; l++) {
+//            if (height[l] > lmax)
+//                lmax = height[l];
+//            fromLeft[l] = lmax;
+//        }
+//
+//        int rmax = 0;
+//        for (int r = height.length - 1; r >= 0; r--) {
+//            if (height[r] > rmax)
+//                rmax = height[r];
+//            fromRight[r] = rmax;
+//        }
+//
+//        int realVolume = 0;
+//        for (int i = 0; i < height.length; i++) {
+//            int curHeight = Math.min(fromLeft[i], fromRight[i]);
+//            realVolume += curHeight - height[i];
+//        }
+//
+//        return realVolume;
+
         if (height.length == 0)
             return 0;
 
@@ -24,7 +51,7 @@ public class trapWater {
             leftHeight[i] = Math.max(leftHeight[i - 1], height[i]);
 
         int[] rightHeight = new int[height.length];
-        rightHeight[0] = height[height.length - 1];
+        rightHeight[height.length - 1] = height[height.length - 1];
         for (int i = height.length - 2; i >= 0; i--)
             rightHeight[i] = Math.max(rightHeight[i + 1], height[i]);
 
