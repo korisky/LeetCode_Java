@@ -28,6 +28,8 @@ public class solveSudoku_S {
     }
 
     public boolean solve(char[][] board, int i, int j) {
+
+        // Using recursion solving on left 2 right, up 2 down order
         if (i == board.length)
             return true;
         if (j == board[0].length)
@@ -45,6 +47,7 @@ public class solveSudoku_S {
                 if (solve(board, i, j + 1))
                     return true;
 
+                // If above criteria is not accepted, we need to "BACKTRACKING" to previous situation
                 rows[i][k] = cols[j][k] = boxs[boxIndex][k] = false;
                 board[i][j] = '.';
             }
