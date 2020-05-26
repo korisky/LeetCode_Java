@@ -6,30 +6,28 @@ import java.util.List;
 
 public class combinationSum2_S {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        if (candidates == null || candidates.length == 0)
+            return new ArrayList<>();
         List<List<Integer>> results = new ArrayList<>();
-        if (candidates == null || candidates.length == 0) ;
-        else {
-            Arrays.sort(candidates);
-            findPossibleComb2(candidates, 0, results, target, new ArrayList<>());
-        }
+        Arrays.sort(candidates);
+        findPossibleComb2(candidates, 0, results, target, new ArrayList<>());
         return results;
     }
 
-    public void findPossibleComb2(int[] candidates, int start, List<List<Integer>> results, int target, ArrayList<Integer> curComb) {
+    public void findPossibleComb2(int[] candidates, int start,
+                                  List<List<Integer>> results, int target, ArrayList<Integer> curComb) {
         if (target == 0) {
             results.add(new ArrayList<>(curComb));
-            return;
-        }
-        if (target < 0)
-            return;
-        for (int i = start; i < candidates.length; i++) {
-            if (candidates[i] > target)
-                break;
-            if (i > start && candidates[i] == candidates[i - 1])
-                continue;
-            curComb.add(candidates[i]);
-            findPossibleComb2(candidates, i + 1, results, target - candidates[i], curComb);
-            curComb.remove(curComb.size() - 1);
+        } else if (target > 0) {
+            for (int curIndex = start; curIndex < candidates.length; curIndex++) {
+                if (candidates[curIndex] > target)
+                    break;
+                if (curIndex > start && candidates[curIndex] == candidates[curIndex - 1])
+                    continue;
+                curComb.add(candidates[curIndex]);
+                findPossibleComb2(candidates, curIndex + 1, results, target - candidates[curIndex], curComb);
+                curComb.remove(curComb.size() - 1);
+            }
         }
     }
 

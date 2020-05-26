@@ -34,7 +34,6 @@ public class combinationSum_S_Faster {
                 curComb.remove(curComb.size() - 1);
             }
         }
-
     }
 
     public static void main(String[] args) {
