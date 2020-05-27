@@ -17,7 +17,7 @@ public class isMatch_Fastest {
             // p finsihed, s not
             if (si != s.length())
                 return false;
-            // s finished, p not, there is poosible that following pi can be empty, like a, ab*
+            // s finished, p not, there is possible that following pi can be empty, like a, ab*
             if (pi != p.length()) {
                 // the only possible way that they could mathc is p has to follow a*b*c*d*
                 if (p.charAt(p.length() - 1) != '*')
