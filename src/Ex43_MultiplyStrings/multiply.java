@@ -1,5 +1,10 @@
 package Ex43_MultiplyStrings;
 
+/*
+Instead using String.charAt(), we convert String into char[] before,
+this would perform much more faster
+ */
+
 public class multiply {
     public String multiply(String num1, String num2) {
 
@@ -7,45 +12,46 @@ public class multiply {
                 || num1.length() == 0 || num2.length() == 0)
             return "";
 
-        String longer = num1;
-        String shorter = num2;
-        if (num1.length() < num2.length()) {
-            longer = num2;
-            shorter = num1;
+        if (num1.equals("0") || num2.equals("0"))
+            return "0";
+
+        char[] longStr;
+        char[] shortStr;
+        if (num1.length() > num2.length()) {
+            longStr = num1.toCharArray();
+            shortStr = num2.toCharArray();
+        } else {
+            longStr = num2.toCharArray();
+            shortStr = num1.toCharArray();
         }
 
         // every 2 elements multiply would not exceed: nums1 + nums2, e.g. 99 x 99 = 9801
-        int[] store = new int[num1.length() + num2.length()];
+        int[] store = new int[longStr.length + shortStr.length];
 
         // Every times we use a single digit from SHORT to multiply the whole long digit
         // we multiply the long digit 1 by 1.
-        for (int i = shorter.length() - 1, basePush = 0; i >= 0; i--, basePush++) {
-            int curShortDigit = shorter.charAt(i) - '0';
-            if (curShortDigit == 0)
-                continue; // no need to multiply 0
-            for (int j = longer.length() - 1, longPush = 0; j >= 0; j--, longPush++) {
-                int curMul = curShortDigit * (longer.charAt(j) - '0'); // get current slot's multiply result
-                int curSlotSum = store[basePush + longPush] + curMul; // get the whole sum
-                store[basePush + longPush + 1] += curSlotSum / 10; // behave like a CARRIER
-                store[basePush + longPush] = curSlotSum % 10; // We use = here, cause we only need to add % 10
+        for (int i = shortStr.length - 1, basePush = 0; i >= 0; i--, basePush++) {
+            int shortDigit = shortStr[i] - '0';
+            if (shortDigit == 0)
+                continue;
+            for (int j = longStr.length - 1, addPush = 0; j >= 0; j--, addPush++) {
+                int curSlotResult = store[basePush + addPush] + shortDigit * (longStr[j] - '0');
+                store[basePush + addPush + 1] += curSlotResult / 10;
+                store[basePush + addPush] = curSlotResult % 10;
             }
         }
         // The result in store is REVERSE !!!
-        for (int num : store)
-            System.out.println(num);
+//        for (int num : store)
+//            System.out.println(num);
 
-        StringBuilder sb = new StringBuilder();
         int startIndex = store.length - 1;
-        while (startIndex >= 0 && store[startIndex] == 0 )
+        while (startIndex >= 0 && store[startIndex] == 0)
             startIndex--;
 
-        if (startIndex < 0)
-            return "0";
-        else {
-            for (int index = 0; index <= startIndex; index++)
-                sb.insert(0, store[index]);
-            return sb.toString();
-        }
+        StringBuilder sb = new StringBuilder();
+        for (int index = startIndex; index >= 0; index--)
+            sb.append(store[index]);
+        return sb.toString();
     }
 
     public static void main(String[] args) {
