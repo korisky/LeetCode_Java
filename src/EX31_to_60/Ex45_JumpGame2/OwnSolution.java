@@ -1,4 +1,4 @@
-package Ex45_JumpGame2;
+package EX31_to_60.Ex45_JumpGame2;
 
 /*
     Stair + Ladder Idea from https://www.youtube.com/watch?v=vBdo7wtwlXs
