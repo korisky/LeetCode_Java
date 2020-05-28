@@ -16,7 +16,7 @@ public class Permutations {
     public ArrayList<String> allPerm;
 
     public ArrayList<String> getAllPermutations(String str) {
-        if (str == null || str == "" || str.length() == 0)
+        if (str == null || str.equals("") || str.length() == 0)
             return null;
         allPerm = new ArrayList<>();
         permutationsRuning(str, 0, str.length() - 1);
@@ -43,7 +43,8 @@ public class Permutations {
         return String.valueOf(chaStr);
     }
 
-    // here is trying to get permutation of Arrays / Lists
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // here is trying to get permutation of several Arrays / Lists
     private ArrayList<String> listComb = new ArrayList<>();
     public void getPermutations_List(List<String> strList, int left, int right) {
         if (left == right) {
@@ -77,8 +78,8 @@ public class Permutations {
         listInput.add(perList_2);
         listInput.add(perList_3);
         ArrayList<String> listResults = test.getPerList_Calling(listInput);
-        for (int i = 0; i < listResults.size(); i++)
-            System.out.println(listResults.get(i));
+        for (String listResult : listResults)
+            System.out.println(listResult);
 
     }
 }
