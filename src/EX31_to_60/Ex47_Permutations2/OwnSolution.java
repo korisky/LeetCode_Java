@@ -1,4 +1,4 @@
-package Ex47_Permutations2;
+package EX31_to_60.Ex47_Permutations2;
 
 import java.util.ArrayList;
 import java.util.HashMap;

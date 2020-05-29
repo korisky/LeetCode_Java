@@ -1,4 +1,4 @@
-package Ex46_Permutations;
+package EX31_to_60.Ex46_Permutations;
 
 import java.util.ArrayList;
 import java.util.Arrays;
