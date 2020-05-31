@@ -1,4 +1,4 @@
-package Ex50_Pow;
+package EX31_to_60.Ex50_Pow;
 
 public class Solution {
     public double getPow(double x, long n) {

@@ -68,4 +68,9 @@ public class Solution {
             }
         }
     }
+
+    public static void main(String[] args) {
+        Solution use = new Solution();
+        System.out.println(use.solveNQueens(4));
+    }
 }

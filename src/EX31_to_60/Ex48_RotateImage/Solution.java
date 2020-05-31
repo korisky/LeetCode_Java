@@ -1,4 +1,4 @@
-package Ex48_RotateImage;
+package EX31_to_60.Ex48_RotateImage;
 
 /*
         The idea is about: do horizontal flip, then do transpose, then would be rotate 90 degree to the right

@@ -1,4 +1,4 @@
-package Ex49_GroupAnagrams;
+package EX31_to_60.Ex49_GroupAnagrams;
 
 import java.util.ArrayList;
 import java.util.HashMap;
