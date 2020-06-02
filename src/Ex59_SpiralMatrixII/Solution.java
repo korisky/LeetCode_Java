@@ -1,28 +1,29 @@
-package Ex54_SpiralMatrix;
+package Ex59_SpiralMatrixII;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> res = new ArrayList<>();
-        if (matrix.length == 0)
-            return res;
+    public int[][] generateMatrix(int n) {
+        int[][] matrix = new int[n][n];
+        if (n == 0)
+            return matrix;
 
         int rowStart = 0;
         int rowEnd = matrix.length - 1;
         int colStart = 0;
         int colEnd = matrix[0].length - 1;
+        int curNum = 1;
         while (rowStart <= rowEnd && colStart <= colEnd) {
 
             // 1. go right
             for (int col = colStart; col <= colEnd; col++)
-                res.add(matrix[rowStart][col]);
+                matrix[rowStart][col] = curNum++;
             rowStart++;
 
             // 2. go downward
             for (int row = rowStart; row <= rowEnd; row++)
-                res.add(matrix[row][colEnd]);
+                matrix[row][colEnd] = curNum++;
             colEnd--;
 
             // 3. go left
@@ -31,16 +32,16 @@ public class Solution {
                 // this would happen (violate this if-statement) if input
                 // matrix is not square
                 for (int col = colEnd; col >= colStart; col--)
-                    res.add(matrix[rowEnd][col]);
+                    matrix[rowEnd][col] = curNum++;
             }
             rowEnd--;
 
             if (colStart <= colEnd) {
                 for (int row = rowEnd; row >= rowStart; row--)
-                    res.add(matrix[row][colStart]);
+                    matrix[row][colStart] = curNum++;
             }
             colStart++;
         }
-        return res;
+        return matrix;
     }
 }
