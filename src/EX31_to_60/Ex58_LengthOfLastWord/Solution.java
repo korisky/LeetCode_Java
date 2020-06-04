@@ -1,4 +1,4 @@
-package Ex58_LengthOfLastWord;
+package EX31_to_60.Ex58_LengthOfLastWord;
 
 public class Solution {
     public int lengthOfLastWord(String s) {

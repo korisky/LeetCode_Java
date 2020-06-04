@@ -1,8 +1,4 @@
-package Ex52_NQueensII;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+package EX31_to_60.Ex52_NQueensII;
 
 public class Solution {
 

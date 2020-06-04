@@ -1,4 +1,4 @@
-package Ex53_MaximumSubarray;
+package EX31_to_60.Ex53_MaximumSubarray;
 
 public class FasterSolution {
     public int maxSubArray(int[] nums) {

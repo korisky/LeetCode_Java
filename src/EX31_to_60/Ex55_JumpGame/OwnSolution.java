@@ -1,4 +1,4 @@
-package Ex55_JumpGame;
+package EX31_to_60.Ex55_JumpGame;
 
 /*
     Too slow for execution

@@ -1,7 +1,4 @@
-package Ex59_SpiralMatrixII;
-
-import java.util.ArrayList;
-import java.util.List;
+package EX31_to_60.Ex59_SpiralMatrixII;
 
 public class Solution {
     public int[][] generateMatrix(int n) {

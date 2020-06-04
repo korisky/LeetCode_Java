@@ -1,4 +1,4 @@
-package Ex60_PermutationSequence;
+package EX31_to_60.Ex60_PermutationSequence;
 
 /*
     The question is quite different from the other Permutation problem:

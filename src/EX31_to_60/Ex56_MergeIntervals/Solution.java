@@ -1,4 +1,4 @@
-package Ex56_MergeIntervals;
+package EX31_to_60.Ex56_MergeIntervals;
 
 /*
     Input: [[1,3],[2,6],[8,10],[15,18]]

@@ -1,4 +1,4 @@
-package Ex51_NQueens;
+package EX31_to_60.Ex51_NQueens;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package Ex54_SpiralMatrix;
+package EX31_to_60.Ex54_SpiralMatrix;
 
 import java.util.ArrayList;
 import java.util.List;

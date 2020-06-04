@@ -1,4 +1,4 @@
-package Ex57_InsertInterval;
+package EX31_to_60.Ex57_InsertInterval;
 
 /*
     Example 1:
