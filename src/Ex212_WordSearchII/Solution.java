@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+/*
+    Too slow if we just keep searching on each specific slot and try out all candidate words
+ */
+
 public class Solution {
     public List<String> findWords(char[][] board, String[] words) {
         HashSet<String> result = new HashSet<>();
