@@ -2,7 +2,7 @@ package Ex1_to_30.Ex23_MergeKSortedLists;
 
 /*
 IMP: 1. for merging two lists, we MUST use a new list, to store their nodes !!!!!!!
-     2. If we need to Merge or Sort some SORTED stuff, try to remember QuickSort && MergeSort
+     2. If we need to Merge or Sort some SORTED stuff, try to remember QuickSortSolution && MergeSort
      MergeSort can be implemented in ANY situation (such as this LIST stuff)
  */
 
@@ -71,8 +71,7 @@ public class mergeKLists_S_Faster {
         w_2.next = w_3;
 
         ListNode s_1 = new ListNode(4);
-        ListNode s_2 = new ListNode(6);
-        s_1.next = s_2;
+        s_1.next = new ListNode(6);
 
         ListNode[] input = new ListNode[3];
         input[0] = t_1;

@@ -65,8 +65,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-//        PriorityQueue<Integer> pq = new PriorityQueue<>((x, y) -> x - y);
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.comparingInt(x -> x));
+        PriorityQueue<Integer> pq = new PriorityQueue<>((x, y) -> y - x);
+//        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.comparingInt(x -> -x));
         pq.add(10);
         pq.add(5);
         System.out.println(pq.peek());
