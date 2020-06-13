@@ -1,4 +1,4 @@
-package Extras.ThreadStuff.SynchronizedDemo;
+package Extras.ConcurrencyStuff.SynchronizedDemo;
 
 
 class NoThreadedSend extends Thread {

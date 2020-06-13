@@ -1,4 +1,4 @@
-package Extras.ThreadStuff.MultiThreading;
+package Extras.ConcurrencyStuff.MultiThreading;
 
 public class Multithread {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Extras.ThreadStuff.MultiThreading;
+package Extras.ConcurrencyStuff.MultiThreading;
 
 public class MultithreadingDemo implements Runnable {
 

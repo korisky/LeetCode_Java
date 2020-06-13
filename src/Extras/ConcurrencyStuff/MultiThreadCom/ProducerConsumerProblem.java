@@ -1,4 +1,4 @@
-package Extras.ThreadStuff.MultiThreadCom;
+package Extras.ConcurrencyStuff.MultiThreadCom;
 
 import java.util.LinkedList;
 
@@ -13,7 +13,7 @@ public class ProducerConsumerProblem {
         public void produce() throws InterruptedException {
             int value = 0;
             while (true) {
-                synchronized (this) {
+                synchronized (this) { // this over here is the PC class
                     while (list.size() == capacity)
                         wait();
                     // if storage is full, we need to stop production
