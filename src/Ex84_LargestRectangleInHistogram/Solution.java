@@ -1,7 +1,19 @@
 package Ex84_LargestRectangleInHistogram;
 
-import java.util.PriorityQueue;
 import java.util.Stack;
+
+/*
+    The idea is about using two stack to store index and height respectively.
+
+    If current index's height is greater than the top one in stack,
+    we just add index and it's height.
+
+    If not: we need to keep pop out the height and index,
+     and update area with: [popHeight * (curIdx - popIdx)]
+
+    Finally, we still need to take care of the stuff inside the stack
+    with: [popHeight * (height.len - popIdx)]
+ */
 
 public class Solution {
     public int largestRectangleArea(int[] heights) {
