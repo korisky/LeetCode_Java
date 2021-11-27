@@ -1,6 +1,9 @@
 package Ex91_to_120.Ex116_PopulatingNextRightPointersInEachNode;
 
-public class Solution {
+/**
+ * 循环版本, while然后修改cur = cur.next这样去处理
+ */
+public class LoopSolution {
     class Node {
         public int val;
         public Node left;
