@@ -3,6 +3,9 @@ package Ex91_to_120.Ex113_PathSumII;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 重点思想在于, 使用前序遍历, 每次寻找到一个节点, 后续targetNum就只需要减去该node的val即可
+ */
 public class Solution {
     public class TreeNode {
         int val;
