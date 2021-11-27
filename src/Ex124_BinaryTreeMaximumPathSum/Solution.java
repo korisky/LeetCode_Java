@@ -1,5 +1,10 @@
 package Ex124_BinaryTreeMaximumPathSum;
 
+/**
+ * 实现方式实际需要想到是后续遍历, 从最小的叶子节点开始往上聚合存在的maxPath,
+ * 单个叶子节点的时候, 我们就需要判断它是否<0, <0的叶子节点全部抛弃,
+ * 而总的path有>0的可以考虑
+ */
 public class Solution {
     public static class TreeNode {
         int val;
