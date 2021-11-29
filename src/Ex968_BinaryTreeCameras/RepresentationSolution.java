@@ -38,7 +38,7 @@ public class RepresentationSolution {
     }
 
     public int dfs(TreeNode root) {
-        // left node is special cases, null-left is not our watching node,
+        // leaf node is special cases, null-left is not our watching node,
         // thus, just give it 0 as no need to care them
         if (root == null) {
             return 0;
