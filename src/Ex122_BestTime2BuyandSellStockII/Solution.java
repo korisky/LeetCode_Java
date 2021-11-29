@@ -7,22 +7,23 @@ package Ex122_BestTime2BuyandSellStockII;
 public class Solution {
     public int maxProfit(int[] prices) {
         int buyPrice = prices[0];
-        int singleTrans = 0;
+        int lastTrans = 0;
         int profitSoFar = 0;
         for (int curPrice : prices) {
-            if (curPrice <= buyPrice || curPrice - buyPrice < singleTrans) {
+            if (curPrice <= buyPrice || curPrice - buyPrice < lastTrans) {
                 // 1) If current price is smaller than the price we bought before,
                 // that means we should sell it before
                 // 2) If current price is less than yesterday's price, we also need to sell it before
                 buyPrice = curPrice;
-                profitSoFar += singleTrans;
-                singleTrans = 0;
+                profitSoFar += lastTrans;
+                lastTrans = 0;
             } else {
                 // here means we gain a higher price, can just keep it to tomorrow
-                singleTrans = curPrice - buyPrice;
+                lastTrans = curPrice - buyPrice;
             }
         }
-        profitSoFar += Math.max(0, singleTrans);
+        // do not forget the last transaction
+        profitSoFar += Math.max(0, lastTrans);
         return profitSoFar;
     }
 

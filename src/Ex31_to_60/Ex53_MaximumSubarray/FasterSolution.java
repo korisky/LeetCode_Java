@@ -1,5 +1,9 @@
 package Ex31_to_60.Ex53_MaximumSubarray;
 
+/**
+ * 因为是和最大的连续数组, 所以每次需要比较是否需要重新开始新数组,
+ * 就是比较 当前值 和 前面数组+当前值 这两个谁更大， 选择最大的那个即可
+ */
 public class FasterSolution {
     public int maxSubArray(int[] nums) {
 
