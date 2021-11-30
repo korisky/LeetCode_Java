@@ -10,44 +10,6 @@ public class IpAddress {
     /**
      * 题目1. 判断ip是否合法
      */
-    public boolean checkIpValidity(String inputIp) {
-
-        // 但是这个做法可能: 012.234.001.02也认为合法
-
-        // 1. contain 3 '.' points, that can be split into 4 parts
-        String[] split = inputIp.split("\\.");
-        if (split.length < 4) {
-            // only xx.xx.xx.xx could be valid
-            return false;
-        }
-
-        // 2. for each 'slot', it must within 255, also the first slot cannot be 0
-        try {
-            Integer sum = 0;
-            for (String s : split) {
-                Integer sinSlotNum = Integer.valueOf(s);
-                if (sinSlotNum > 255) {
-                    // greater than 255, is not a valid ipv4 address
-                    return false;
-                }
-                // plus each slot's number
-                sum += sinSlotNum;
-            }
-
-            // 3. special condition for 0.0.0.0
-            if (sum.equals(0)) {
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            // when parsing ip format throw exception, it must be invalid
-            return false;
-        }
-
-        // pass all conditions
-        return true;
-    }
-
-    //    private static final String IP_EXPRESSION = "([2][0-5]\\d|[1]\\d{2}|\\d)(\\.([2][0-5]\\d|[1]\\d{2}|\\d)){3}";
     String zeroTo255 = "(\\d{1,2}|1\\d{2}|2[0-4]\\d|25[0-5])";
     String IP_EXPRESSION = zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255;
 

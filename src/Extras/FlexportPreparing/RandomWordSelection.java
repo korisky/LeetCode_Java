@@ -30,7 +30,6 @@ public class RandomWordSelection {
             int locChoose = rand.nextInt(locs.size());
             wordIdx = locs.get(locChoose);
         }
-
         return result;
     }
 
