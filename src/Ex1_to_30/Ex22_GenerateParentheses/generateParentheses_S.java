@@ -19,20 +19,20 @@ public class generateParentheses_S {
     public List<String> generateParenthesis(int n) {
         stores = new ArrayList<>();
         if (n > 0)
-            pushBra(n, n, new StringBuilder());
+            pushBar(n, n, new StringBuilder());
         return stores;
     }
 
-    public void pushBra(int leftRemaining, int rightRemaining, StringBuilder sb) {
+    public void pushBar(int leftRemaining, int rightRemaining, StringBuilder sb) {
         if (leftRemaining == 0 && rightRemaining == 0) {
             stores.add(sb.toString());
         } else if (leftRemaining == 0) {
-            pushBra(leftRemaining, rightRemaining - 1, sb.append(")"));
+            pushBar(leftRemaining, rightRemaining - 1, sb.append(")"));
             sb.deleteCharAt(sb.length() - 1);
         } else if (rightRemaining != 0 && leftRemaining <= rightRemaining) {
-            pushBra(leftRemaining - 1, rightRemaining, sb.append("("));
+            pushBar(leftRemaining - 1, rightRemaining, sb.append("("));
             sb.deleteCharAt(sb.length() - 1);
-            pushBra(leftRemaining, rightRemaining - 1, sb.append(")"));
+            pushBar(leftRemaining, rightRemaining - 1, sb.append(")"));
             sb.deleteCharAt(sb.length() - 1);
         }
     }

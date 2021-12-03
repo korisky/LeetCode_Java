@@ -1,5 +1,9 @@
 package Ex208_ImplementTrie_PrefixTree;
 
+/**
+ * 问题重点在于, 内部存储一个TrieNode数组, 每次input的char, 都会 -'a' 这样,
+ * 放到对应数组中, 这样找到数组应该会比hash更快
+ */
 public class Solution {
 
     class TrieNode {

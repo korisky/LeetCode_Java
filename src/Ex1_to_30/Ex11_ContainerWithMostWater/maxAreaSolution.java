@@ -4,7 +4,7 @@ package Ex1_to_30.Ex11_ContainerWithMostWater;
 Main idea here is about: we keep narrow two 'bars' as left one and right one
 Each step, we narrow the one with shorter height, as we narrow it, the length
 between two bars would become smaller, we can only get greater MAXAREA by finding
-a taller bar than the current shorter one.
+a taller bar than the current shorter one, in this shallower distance between two bars
  */
 
 public class maxAreaSolution {
