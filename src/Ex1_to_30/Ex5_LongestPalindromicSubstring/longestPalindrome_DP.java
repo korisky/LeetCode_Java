@@ -31,7 +31,7 @@ public class longestPalindrome_DP {
         }
         int curLenP = 3;
         while (curLenP <= s.length()) { // from length of 3, we keep find increasing length palidrome
-            for (int i = 0; i < sArr.length - curLenP + 1; i++) {
+            for (int i = 0; i < sArr.length + 1 - curLenP; i++) {
                 int j = i + curLenP - 1;
                 if (sArr[i] == sArr[j] && table[i + 1][j - 1] == 1) {
                     table[i][j] = 1;
