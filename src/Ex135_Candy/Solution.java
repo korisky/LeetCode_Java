@@ -1,7 +1,6 @@
 package Ex135_Candy;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 /**
  * Simple approach considering the 'water tank' problem, by 'scan' the array from left 2 right, and right 2 left
