@@ -8,6 +8,9 @@ package Ex134_GasStation;
         this total gaining must >= 0, or else must not have any valid path
 
         2) current gaining, is to judge whether a start point is valid.
+
+        why it works?
+        Because if there is a solution, that we can run all station, it must can be run from any station as start
  */
 
 public class Solution {
