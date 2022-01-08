@@ -3,6 +3,12 @@ package Ex146_LRUCache;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * LRU 算法的要点在于:
+ *  1. 使用一个双向链表用于存储访问的先后次序, 每次访问到的值, 先需要在原链表中断开, 然后add到头部
+ *      如果新的值需要插入, 先判断链表是否超过capacity, 如果是则需要移除尾部
+ *  2. 使用一个hashMap来存储内容, 方便判断是否有某个元素, 以及元素的值
+ */
 public class LRUCache {
 
     /**
