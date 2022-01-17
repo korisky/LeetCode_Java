@@ -11,8 +11,7 @@ public class Solution {
 
         int ops = 0;
         Map<Integer, Integer> freMap = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int curVal = nums[i];
+        for (int curVal : nums) {
             if (freMap.containsKey(curVal)) {
                 Integer fre = freMap.get(curVal);
                 if (fre == 1) {
