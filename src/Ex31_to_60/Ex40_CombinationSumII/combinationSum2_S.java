@@ -25,6 +25,8 @@ public class combinationSum2_S {
                 if (curIndex > start && candidates[curIndex] == candidates[curIndex - 1])
                     continue;
                 curComb.add(candidates[curIndex]);
+                // difference from the Ex39, in this question, each number can be used exactly once
+                // thus, we use curIndex + 1 instead of curIndex
                 findPossibleComb2(candidates, curIndex + 1, results, target - candidates[curIndex], curComb);
                 curComb.remove(curComb.size() - 1);
             }
