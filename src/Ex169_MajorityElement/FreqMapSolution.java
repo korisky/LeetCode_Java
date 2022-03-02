@@ -11,7 +11,7 @@ public class FreqMapSolution {
         int maxNum = 0;
         for (int i = 0; i < nums.length; i++) {
             // adding frequency and put into map
-            Integer curNumFreq = freq.getOrDefault(nums[i], 0) + 1;
+            int curNumFreq = freq.getOrDefault(nums[i], 0) + 1;
             freq.put(nums[i], curNumFreq);
             if (maxFreq < curNumFreq) {
                 maxFreq = curNumFreq;

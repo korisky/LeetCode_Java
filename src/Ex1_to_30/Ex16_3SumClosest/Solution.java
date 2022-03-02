@@ -14,14 +14,14 @@ public class Solution {
             int right = nums.length - 1;
 
             int minSum = curLeft + nums[mid] + nums[mid + 1];
-            if (minSum > target){
+            if (minSum > target) {
                 if (Math.abs(target - minSum) < Math.abs(dif))
                     dif = target - minSum;
                 break;
             }
 
             int maxSum = curLeft + nums[right - 1] + nums[right];
-            if (maxSum < target){
+            if (maxSum < target) {
                 if (Math.abs(target - maxSum) < Math.abs(dif))
                     dif = target - maxSum;
                 continue;

@@ -1,9 +1,6 @@
 package Extras;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class MapAndList {
     public static void main(String[] args) {
@@ -13,6 +10,6 @@ public class MapAndList {
         Map<Integer, Integer> theHashTable = new Hashtable<>();
         Map<Integer, Integer> theTreeMap = new TreeMap<>();
 
-
+        Deque<String> deque = new LinkedList<>();
     }
 }

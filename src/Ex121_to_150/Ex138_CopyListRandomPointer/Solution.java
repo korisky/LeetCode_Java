@@ -25,8 +25,8 @@ public class Solution {
         while (iter != null) {
             // deep copy
             Node copy = new Node(iter.val);
-            copy.next = iter.next;
             // each node point next to it's copy
+            copy.next = iter.next;
             iter.next = copy;
             // keep iterating
             iter = copy.next;

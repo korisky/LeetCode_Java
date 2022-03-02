@@ -21,6 +21,7 @@ public class OwnSolution {
             results.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
         } else {
             for (int i = pointer; i < nums.length; i++) {
+                // let i = pointer, then we can also get the 'origin' permutation
                 swap(nums, pointer, i);
                 getPermutes(nums, pointer + 1, results);
                 swap(nums, pointer, i);
