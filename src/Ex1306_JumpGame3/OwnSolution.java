@@ -1,7 +1,5 @@
 package Ex1306_JumpGame3;
 
-import java.util.HashSet;
-
 public class OwnSolution {
     public boolean canReach(int[] arr, int start) {
         if (start < 0 || start >= arr.length)
