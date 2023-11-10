@@ -1,9 +1,8 @@
 package Extras;
 
 import java.util.Arrays;
-import java.util.Collections;
 
-public class TimSort {
+public class TimSortDemno {
 
     public static void main(String[] args) {
 
@@ -17,7 +16,7 @@ public class TimSort {
 
         // Sort the array using TimSort (implicitly)
         // Only when you are not dealing with native types, the one
-        // implement the Comparable would call TimSort
+        // implement the Comparable would call ComparableTimSort
         Arrays.sort(people);
 
         // Print out the sorted array
@@ -25,6 +24,27 @@ public class TimSort {
             System.out.println(person);
         }
     }
+
+    /**
+     * Followed https://www.youtube.com/watch?v=GhP5WbE4GYo to implement TimSort
+     */
+    public record TheTimSort<T extends Comparable<T>>(T[] arr) {
+
+        private static final int MIN_RUN_SIZE = 4;
+
+        public void sort() {
+
+
+
+
+
+        }
+
+
+
+
+    }
+
 
     static class Person implements Comparable<Person> {
         private String name;
