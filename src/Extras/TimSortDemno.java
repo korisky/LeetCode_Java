@@ -34,13 +34,26 @@ public class TimSortDemno {
 
         public void sort() {
 
+            // 1. sort each run with Insertion Sort
+            for (int start = 0; start < arr.length; start += MIN_RUN_SIZE) {
+                // in case remaining < min_run_size
+                int end = Math.min((start + MIN_RUN_SIZE), (arr.length));
+                new InsertionSort<>(arr).sort(start, end);
+            }
 
-
+            // 2. Merge the sorted runs
+//            int runSize = 1;
+//
+//            for (int left = 0; left < arr.length; left += 2 * runSize) {
+//                int mid = left + runSize - 1;
+//                int right = Math.min((left + 2 * runSize - 1), (arr.length - 1));
+//                if (mid < right) {
+//                    MergeSort.MergeOne(arr, left, mid, right);
+//                }
+//            }
 
 
         }
-
-
 
 
     }
