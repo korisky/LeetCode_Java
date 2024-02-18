@@ -3,7 +3,9 @@ package Ex121_to_150.Ex148_SortList;
 public class AnotherSol {
 
     /**
-     * MergeSort 归并排序作用于链表
+     * MergeSort 归并排序作用于链表,
+     * 实际下列使用递归, 时间复杂度是O(nLogN), 但空间复杂度不符合O(1)
+     * 若要达到O(1)的空间复杂度，则需要考虑, 不递归调用, 而是通过步长(stepSize = stepSize * 2)来进行排序
      */
     public ListNode sortList_MergeSortSolution(ListNode head) {
 
@@ -26,8 +28,8 @@ public class AnotherSol {
         ListNode left = sortList_MergeSortSolution(head);
         ListNode right = sortList_MergeSortSolution(slow);
 
-        // TODO 5. MergeSort中的归并
-        return null;
+        // 5. MergeSort中的归并
+        return mergeOps(left, right);
     }
 
     public ListNode mergeOps(ListNode l, ListNode r) {
