@@ -6,9 +6,34 @@ public class AnotherSol {
 
     public static void main(String[] args) {
         int[] test1 = new int[]{2, 0, 2, 1, 1, 0};
-        mergeSort(test1, 0, test1.length - 1);
+//        mergeSort(test1, 0, test1.length - 1);
+        swap(test1);
         System.out.println();
     }
+
+    /**
+     * 由于规定了只有3种类别的值, 可以使用更简单swap方式, 2个指针分别指向0和2, 1的不处理
+     */
+    public static void swap(int[] nums) {
+        int rPointer = 0, bPointer = nums.length - 1, idx = 0;
+        while (idx <= bPointer) {
+            // 当前为0, 将其swap到头部
+            if (nums[idx] == 0) {
+                nums[idx] = nums[rPointer];
+                nums[rPointer] = 0;
+                rPointer++;
+            }
+            // 当前为2, 将其swap到尾部, 同时idx-1, 需要再判断一次
+            if (nums[idx] == 2) {
+                nums[idx] = nums[bPointer];
+                nums[bPointer] = 2;
+                bPointer--;
+                idx--;
+            }
+            idx++;
+        }
+    }
+
 
     /**
      * 针对Array, 使用的MergeSort应该做swap操作, 要用带idx的方式
