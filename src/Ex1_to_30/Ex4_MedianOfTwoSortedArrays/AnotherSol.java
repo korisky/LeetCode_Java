@@ -3,8 +3,8 @@ package Ex1_to_30.Ex4_MedianOfTwoSortedArrays;
 public class AnotherSol {
 
     public static void main(String[] args) {
-        int[] nums1 = new int[]{1, 2, 3, 4, 5};
-        int[] nums2 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] nums1 = new int[]{1, 2};
+        int[] nums2 = new int[]{3, 4};
         double medianSortedArrays = findMedianSortedArrays(nums1, nums2);
         System.out.println(medianSortedArrays);
     }
@@ -12,28 +12,53 @@ public class AnotherSol {
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
 
-        int totalLen = nums1.length + nums2.length;
-        int half = totalLen / 2;
+        int len1 = nums1.length;
+        int len2 = nums2.length;
+        if (len1 > len2) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
 
-        int m1Mid = nums1[(nums1.length - 1) / 2];
-        int m2Mid = nums2[half - ((nums1.length - 1) / 2)];
+        int totalLen = len1 + len2;
+        int left = (totalLen + 1) / 2;
+        int low = 0, high = len1;
 
-        while (m1Mid < nums1.length - 2 && m2Mid < nums2.length - 2) {
-            if (nums2[m2Mid] > nums1[m1Mid + 1]) {
-                // num2中的mid比num1中的mid下一位大, 需要拓展num1的取值
-                m1Mid++;
-            } else if (nums1[m1Mid] > nums2[m2Mid + 1]) {
-                // 反之, 拓展m1的值
-                m2Mid++;
-            } else {
-                m1Mid++;
-                m2Mid++;
+        while (low <= high) {
+            int mid1 = (low + high) >> 1;
+            int mid2 = left - mid1;
+
+            int l1 = Integer.MIN_VALUE, l2 = Integer.MIN_VALUE,
+                    r1 = Integer.MAX_VALUE, r2 = Integer.MAX_VALUE;
+
+            if (mid1 < len1) {
+                r1 = nums1[mid1];
             }
+
+            if (mid2 < len2) {
+                r2 = nums2[mid2];
+            }
+
+            if (mid1 - 1 >= 0) {
+                l1 = nums1[mid1 - 1];
+            }
+
+            if (mid2 - 1 >= 0) {
+                l2 = nums2[mid2 - 1];
+            }
+
+            if (l1 <= r2 && l2 <= r1) {
+                return (totalLen % 2 == 1)
+                        ? Math.max(l1, l2)
+                        : (Math.max(l1, l2) + Math.min(r1, r2)) / 2.0;
+
+            } else if (l1 > r2) {
+                high = mid1 - 1;
+            } else {
+                low = mid1 + 1;
+            }
+
         }
 
-        if (totalLen % 2 == 0) {
-            return (Math.max(nums1[m1Mid], nums2[m2Mid]) + Math.min(nums1[m1Mid + 1], nums2[m2Mid + 1])) / 2.0;
-        }
-        return Math.max(nums1[m1Mid], nums2[m2Mid]);
+
+        return 0.0;
     }
 }
