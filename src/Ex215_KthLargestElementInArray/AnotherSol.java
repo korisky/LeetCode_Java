@@ -9,24 +9,23 @@ public class AnotherSol {
     /**
      * 找到topN最大或者最小的元素, 实际上考核的是跟QuickSort很近似的QuickSelect算法, 最好用这个而不是偷工减料的Arrays.sort
      */
-    public int findKthLargest(int[] nums, int k) {
-
-        return 0;
-    }
-
     public static void main(String[] args) {
         int topN = 6;
         int[] test = new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6};
 
         // quickSelect
-        int i = quickSelect(test, 0, test.length - 1, test.length - topN);
+//        int i = quickSelect(test, 0, test.length - 1, test.length - topN);
+//        System.out.println("Top " + topN + ", is: " + i);
+
+        // minHeap
+        int i = minHeap(test, 2);
         System.out.println("Top " + topN + ", is: " + i);
 
         // quickSort
         quickSort(test, 0, test.length - 1);
         StringBuilder sb = new StringBuilder();
         for (int i1 : test) {
-            sb.append(i1);
+            sb.append(i1 + " ");
         }
         System.out.println(sb);
     }
