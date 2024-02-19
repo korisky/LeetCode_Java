@@ -1,5 +1,8 @@
 package Ex215_KthLargestElementInArray;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 public class AnotherSol {
 
 
@@ -29,7 +32,23 @@ public class AnotherSol {
     }
 
     /**
+     * 对于LeetCode的test限制, minHeap可能才是他们希望我们使用的方式
+     */
+    public static int minHeap(int[] nums, int topK) {
+        Queue<Integer> minHeap = new PriorityQueue<>();
+        for (int num : nums) {
+            minHeap.add(num);
+            if (minHeap.size() > topK) {
+                minHeap.poll();
+            }
+        }
+        return minHeap.peek();
+    }
+
+
+    /**
      * QuickSelect的不同, 由于知道需要找到top几的数而且总数是确定的, 所以可以只查找一半来接近O(nlogN)
+     * 但是极端大的nums的情况下, 在LeetCode会超时
      */
     public static int quickSelect(int[] nums, int low, int high, int targetIdx) {
 
