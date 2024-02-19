@@ -38,10 +38,10 @@ public class AnotherSol {
         for (int num : nums) {
             minHeap.add(num);
             if (minHeap.size() > topK) {
-                minHeap.poll();
+                minHeap.poll(); // 剔除在queue后面的
             }
         }
-        return minHeap.peek();
+        return minHeap.peek(); // 从小到大的排序, 找第一个是最小的, 也就是topN
     }
 
 
