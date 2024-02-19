@@ -12,12 +12,53 @@ public class AnotherSol {
     }
 
     public static void main(String[] args) {
+        int topN = 6;
         int[] test = new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6};
+
+        // quickSelect
+        int i = quickSelect(test, 0, test.length - 1, test.length - topN);
+        System.out.println("Top " + topN + ", is: " + i);
+
+        // quickSort
         quickSort(test, 0, test.length - 1);
-        System.out.println();
+        StringBuilder sb = new StringBuilder();
+        for (int i1 : test) {
+            sb.append(i1);
+        }
+        System.out.println(sb);
     }
 
+    /**
+     * QuickSelect的不同, 由于知道需要找到top几的数而且总数是确定的, 所以可以只查找一半来接近O(nlogN)
+     */
+    public static int quickSelect(int[] nums, int low, int high, int targetIdx) {
 
+        // 当两端一致, 证明就是要找这个元素, 这个与QuickSort中的只处理if(left < right)不同, 相等直接可返回
+        if (low == high) {
+            return nums[low];
+        }
+
+        // 获取pivotIdx的partition部分完全与QuickSort一致
+        int pivotIdx = partition(nums, low, high);
+
+        // 核心不同点从这开始, 若需要找的idx正好是pivot, 立刻可以返回
+        if (pivotIdx == targetIdx) {
+            return nums[pivotIdx];
+        }
+
+        if (pivotIdx < targetIdx) {
+            // 若当前pivot还没到idx, 证明要找比pivot更大的部分
+            return quickSelect(nums, pivotIdx + 1, high, targetIdx);
+        } else {
+            // 若当前pivot比idx大, 则是找更小的部分
+            return quickSelect(nums, low, pivotIdx - 1, targetIdx);
+        }
+    }
+
+    /**
+     * QuickSort, 最好O(nLogN), 最差O(n^2)的排序算法
+     * 核心在于: 通过partition切分小于和大于pivot的部分, 然后再对这两个部分继续quickSort
+     */
     public static void quickSort(int[] nums, int low, int high) {
         if (low < high) {
             // 与MergeSort类似, 这个位置的左边和右边，分别是比该idx值更小和更大的部分
