@@ -24,8 +24,23 @@ public class AnotherSol {
 
 
     public static Solution.ListNode reverseList(Solution.ListNode head) {
-        recursiveReverse(head);
-        return extraPointer;
+
+        // 使用额外指针的方式
+//        recursiveReverse(head);
+//        return extraPointer;
+
+        // 直接返回newHead的方式
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Solution.ListNode newHead = reverseList(head.next);
+
+        // 相较于操作newHead.next = head
+        // 直接操作 head.next.next = newHead 可以直接避免修改nextNode, 使得可以返回tail为head
+        head.next.next = newHead;
+        head.next = null;
+        return newHead;
     }
 
     public static Solution.ListNode recursiveReverse(Solution.ListNode curNode) {
