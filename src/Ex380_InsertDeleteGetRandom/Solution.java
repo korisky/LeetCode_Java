@@ -1,84 +1,62 @@
 package Ex380_InsertDeleteGetRandom;
 
-import java.util.HashSet;
+import java.util.*;
 
-/**
- * 组建一个轮询的randomSet
- */
 public class Solution {
 
-    public static void main(String[] args) {
-        RandomizedSet randomizedSet = new RandomizedSet();
-        System.out.println(randomizedSet.insert(1));
-        System.out.println(randomizedSet.remove(2));
-        System.out.println(randomizedSet.insert(2));
-        System.out.println(randomizedSet.getRandom());
-        System.out.println(randomizedSet.getRandom());
-        System.out.println(randomizedSet.getRandom());
-        System.out.println(randomizedSet.insert(1));
-        System.out.println(randomizedSet.getRandom());
-    }
 
-    static class Node {
-        int val;
-        Node next;
-
-        public Node(int val) {
-            this.val = val;
-        }
-    }
-
-
+    /**
+     * 题目意思是, 插入之后的数据, 要和已经在的部分获取同样的选择可能性
+     */
     static class RandomizedSet {
 
-        HashSet<Integer> valSet;
+        List<Integer> values;
 
-        Node dumHead;
+        Map<Integer, Integer> valueToIdxMap;
 
-        Node cur;
+        Random rand;
+
 
         public RandomizedSet() {
-            valSet = new HashSet<>();
-            dumHead = new Node(0);
+            values = new ArrayList<>();
+            valueToIdxMap = new HashMap<>();
+            rand = new Random();
+        }
+
+        public boolean search(int val) {
+            return valueToIdxMap.containsKey(val);
         }
 
         public boolean insert(int val) {
-            if (valSet.contains(val)) {
+            if (search(val)) {
                 return false;
             }
-            valSet.add(val);
-            // node list
-            Node iter = dumHead;
-            while (iter.next != null) {
-                iter = iter.next;
-            }
-            iter.next = new Node(val);
+            valueToIdxMap.put(val, values.size());
+            values.add(val);
             return true;
         }
 
         public boolean remove(int val) {
-            if (!valSet.contains(val)) {
+            if (!search(val)) {
                 return false;
             }
-            valSet.remove(val);
-            Node iter = dumHead;
-            while (iter.next != null) {
-                if (iter.next.val == val) {
-                    iter.next = iter.next.next;
-                    break;
-                }
-                iter = iter.next;
-            }
+
+            // 使用这个操作, 将最后元素放到被删除的元素的位置
+            Integer idx = valueToIdxMap.get(val);
+            Integer lastEle = values.get(values.size() - 1);
+            values.set(idx, lastEle);
+
+            // 这个元素对应的list的size应该就是这个位置
+            valueToIdxMap.put(lastEle, idx);
+
+            // 删除最后一位
+            values.remove(values.size() - 1);
+            valueToIdxMap.remove(val);
             return true;
         }
 
         public int getRandom() {
-            if (cur == null) {
-                cur = dumHead.next;
-            }
-            Node nxt = cur;
-            cur = cur.next;
-            return nxt.val;
+            return values.get(rand.nextInt(values.size()));
         }
     }
 }
