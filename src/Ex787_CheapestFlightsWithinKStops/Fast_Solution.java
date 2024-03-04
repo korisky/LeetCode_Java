@@ -1,4 +1,4 @@
-package Ex_787CheapestFlightsWithinKStops;
+package Ex787_CheapestFlightsWithinKStops;
 
 import java.util.Arrays;
 
