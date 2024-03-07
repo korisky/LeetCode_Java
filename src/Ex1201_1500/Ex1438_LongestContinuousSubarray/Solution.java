@@ -25,8 +25,43 @@ public class Solution {
         return res;
     }
 
+    /**
+     * 这个是更快的方法, 理解较为困难, 暂时记录
+     */
+    public static int longestSubarray(int[] nums, int limit) {
+
+        LinkedList<Integer> maxQ = new LinkedList<>();
+        LinkedList<Integer> minQ = new LinkedList<>();
+
+        int i = 0, j = 0;
+        for (j = 0; j < nums.length; j++) {
+
+            while (!maxQ.isEmpty() && maxQ.peekLast() < nums[j]) {
+                maxQ.removeLast();
+            }
+            maxQ.addLast(nums[j]);
+
+            while (!minQ.isEmpty() && minQ.peekLast() > nums[j]) {
+                minQ.removeLast();
+            }
+
+            minQ.addLast(nums[j]);
+            if (maxQ.getFirst() - minQ.getFirst() > limit) {
+                if (maxQ.peek() == nums[i]) {
+                    maxQ.removeFirst();
+                }
+                if (minQ.peek() == nums[i]) {
+                    minQ.removeFirst();
+                }
+                i++;
+            }
+        }
+        return j - i;
+    }
+
+
     public static void main(String[] args) {
         int[] nums = new int[]{8, 2, 4, 7};
-        System.out.println(longestSubarray_TreeSet(nums, 4));
+        System.out.println(longestSubarray(nums, 4));
     }
 }
