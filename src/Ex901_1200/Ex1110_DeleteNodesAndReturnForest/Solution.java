@@ -51,6 +51,7 @@ public class Solution {
         }
 
         // 而递归调用时, 如果当前被delete了, 那么就会告知下一个节点, 需要变为root
+        // 并且这里需要进行更新, 截断null的部分
         root.left = dfsDel(root.left, needsDel);
         root.right = dfsDel(root.right, needsDel);
         return needsDel ? null : root;
