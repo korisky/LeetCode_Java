@@ -42,9 +42,13 @@ public class Solution {
 
         maxPath = Math.max(maxPath, root.val + leftMax + rightMax);
 
+        // 这里是从题目定义而来, 一条路径一定是从root开始, 然后延展过去不断, 所以对于val来说, 返回的内容一定是2个节点,
+        // 所以对于当前节点来说, 返回值只能是自己val + left或right的最大值
         return root.val + Math.max(leftMax, rightMax);
-        // another tricky part, if we still go up from this node (include the current parent node and its ancestors)
-        // we can only choose left or right path + current val, but not left + right
+        // Definition of a Path: In the context of this problem, a valid path must be continuous and unidirectional,
+        // meaning you can't go down one branch of the tree and then back up to traverse down another branch.
+        // Therefore, at any given node, the maximum sum path that continues through that node to its parent can either
+        // come from its left child or its right child, not both.
     }
 
     public static void main(String[] args) {
