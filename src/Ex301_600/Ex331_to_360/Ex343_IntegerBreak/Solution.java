@@ -13,7 +13,7 @@ public class Solution {
      * 以上面的例子, dp[5] = dp[5] 或 ( max(dp[1], 1) x max(dp[5-1], 5-1) )
      * 而每次都跟dp[i]进行对比, 是因为j是内层循环, 可能不同大小的j已经出来过最大的值了
      */
-    public int integerBreak(int n) {
+    public static int integerBreak(int n) {
 
         int[] dp = new int[n + 1];
         dp[1] = 1;
@@ -26,5 +26,14 @@ public class Solution {
             }
         }
         return dp[n];
+    }
+
+    public static void main(String[] args) {
+        System.out.println(integerBreak(2)); // 应该为1
+        System.out.println(integerBreak(3)); // 应该为2
+        System.out.println(integerBreak(4)); // 应该为4
+        System.out.println(integerBreak(5)); // 应该为6
+        System.out.println(integerBreak(6)); // 应该为9
+        System.out.println(integerBreak(7)); // 应该为12
     }
 }
