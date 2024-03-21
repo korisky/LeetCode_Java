@@ -23,6 +23,21 @@ public class Solution {
         }
     }
 
+    /**
+     * V1 版本使用3个旋转, 该V2版本则使用取模的概念, 可以重新放置
+     */
+    public void rotateV2(int[] nums, int k) {
+        // 取模放置
+        int[] tmp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            tmp[(i + k) % nums.length] = nums[i];
+        }
+        // 复制回原数组
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = tmp[i];
+        }
+    }
+
     public static void main(String[] args) {
         Solution use = new Solution();
         int[] test = new int[]{1, 2, 3, 4, 5, 6, 7};
