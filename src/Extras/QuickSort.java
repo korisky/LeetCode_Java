@@ -15,8 +15,7 @@ public class QuickSort {
 
         for (int curIdx = low; curIdx < high; curIdx++) {
             if (arr[curIdx] <= pivot) {
-                minEleIdx++;
-                swap(arr, minEleIdx, curIdx);
+                swap(arr, ++minEleIdx, curIdx);
             }
         }
         swap(arr, ++minEleIdx, high);

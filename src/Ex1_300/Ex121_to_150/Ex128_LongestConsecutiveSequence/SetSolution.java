@@ -16,6 +16,7 @@ public class SetSolution {
         int globalMax = 0;
         for (int num : nums) {
             int maxLen = 1;
+            // 不存在n-1的时候开始尝试递增, 因为确保要从最小的那一个开始往上找
             if (!remainingSet.contains(num - 1)) {
                 while (remainingSet.contains(num + 1)) {
                     remainingSet.remove(num + 1);
