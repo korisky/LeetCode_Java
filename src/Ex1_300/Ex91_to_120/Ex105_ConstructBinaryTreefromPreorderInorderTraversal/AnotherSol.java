@@ -21,7 +21,7 @@ public class AnotherSol {
     }
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return null;
+        return treeConstructor(0, 0, preorder.length - 1, preorder, inorder);
     }
 
     public TreeNode treeConstructor(int preIdx, int inStaIdx, int inEndIdx, int[] preorder, int[] inorder) {
@@ -39,11 +39,15 @@ public class AnotherSol {
                 break;
             }
         }
+
         // 递归构建左子树与右子树
         // 左子树构建较好理解, 由于前序遍历每一个节点都是当前子树的root,  所以这里直接+1, staIdx也不变, 但endIdx则一定在当前inIdx-1的位置
         curRoot.left = treeConstructor(preIdx + 1, inStaIdx, inIdx - 1, preorder, inorder);
+
         // 右子树较为复杂, 主要在于preIdx位置, 是当前preIdx的位置 + 左子树的节点数量 (inIdx - inStaIdx + 1), 而右子树的start当然就是当前inIdx+1的位置
-        curRoot.right = treeConstructor(preIdx + inIdx - inStaIdx + 1, inIdx + 1, inEndIdx, preorder, inorder);
+        // e.g. in: [3(左), 2(左), 1, 5, 4], pre: [1(root), 2(左), 3(左), 4(右), 5(右)],
+        // 可以看出, preOrder中的右子树的root, 就是= preIdx(0) + (inIdx(2) - inIdx(0) + 1) = preIdx(3) -> 刚好是5
+        curRoot.right = treeConstructor(preIdx + (inIdx - inStaIdx + 1), inIdx + 1, inEndIdx, preorder, inorder);
         return curRoot;
     }
 }
