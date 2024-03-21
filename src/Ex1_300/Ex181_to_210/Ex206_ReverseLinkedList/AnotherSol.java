@@ -38,7 +38,7 @@ public class AnotherSol {
 
         // 相较于操作newHead.next = head
         // 直接操作 head.next.next = newHead 可以直接避免修改nextNode, 使得可以返回tail为head
-        head.next.next = newHead;
+        head.next.next = head;
         head.next = null;
         return newHead;
     }
