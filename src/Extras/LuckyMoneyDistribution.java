@@ -1,6 +1,7 @@
 package Extras;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -29,21 +30,25 @@ public class LuckyMoneyDistribution {
 
             // 更新并保存, 存储的金额单位元
             BigDecimal curRandAmtInFen = new BigDecimal(randAmtInFen);
-            resultList.add(curRandAmtInFen.divide(new BigDecimal("100")));
+            resultList.add(curRandAmtInFen.divide(new BigDecimal("100"), 2, RoundingMode.FLOOR));
             remainAmtInFen = remainAmtInFen.subtract(curRandAmtInFen);
             remainPeopleNum--;
         }
 
         // 最后1人拿走全部
-        resultList.add(remainAmtInFen.divide(new BigDecimal("100")));
+        resultList.add(remainAmtInFen.divide(new BigDecimal("100"), 2, RoundingMode.FLOOR));
         return resultList;
     }
 
     public static void main(String[] args) {
         List<BigDecimal> distribution = distribution("100", 5);
+        BigDecimal summing = BigDecimal.ZERO;
         for (BigDecimal amtInYuan : distribution) {
             System.out.println(amtInYuan);
+            summing = summing.add(amtInYuan);
         }
+        System.out.println();
+        System.out.println("Sum: " + summing);
     }
 
 }
