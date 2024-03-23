@@ -18,6 +18,7 @@ public class Solution {
         int curMin = Integer.MAX_VALUE;
         int curMax = Integer.MIN_VALUE;
 
+        // 与气球题目不同, 区间问题一定要比较最左边界作为起始, 才可能合并成功
         Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
         for (int[] interval : intervals) {
             if (interval[0] <= curMax) {

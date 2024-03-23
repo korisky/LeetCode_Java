@@ -20,6 +20,10 @@ public class Solution {
         }
     }
 
+    /**
+     * 递归的方式, 考虑每一次递归都是sum = sum - root.val, 分别向left和right进行搜索
+     * 其中当left和right都为null时, 判断当前val = sum, 即能判断出有没有包含这些path
+     */
     public boolean hasPathSum(TreeNode root, int sum) {
         if (root == null) {
             return false;

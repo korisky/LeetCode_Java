@@ -21,7 +21,7 @@ public class IntervalMaxSubString {
         dp[0] = Math.max(0, arr[0]);
         dp[1] = Math.max(dp[0], arr[1]);
 
-        // dp[i] 可以选择上一个 dp[i-1] 或 dp[i-2] + 当前遍历的元素
+        // dp[i] 可以直接选择上一个 dp[i-1], 或 dp[i-2] + [当前遍历的元素]
         for (int i = 2; i < arr.length; i++) {
             dp[i] = Math.max(dp[i - 1], arr[i] + dp[i - 2]);
         }

@@ -37,8 +37,7 @@ public class Solution {
     public void helper(TreeNode root, int sum, ArrayList<Integer> tempList) {
         if (root != null) {
             tempList.add(root.val);
-            int remain = sum - root.val;
-            if (remain == 0 && root.left == null && root.right == null) {
+            if (sum - root.val == 0 && root.left == null && root.right == null) {
                 res.add(new ArrayList<>(tempList));
             } else {
                 helper(root.left, sum - root.val, tempList);
