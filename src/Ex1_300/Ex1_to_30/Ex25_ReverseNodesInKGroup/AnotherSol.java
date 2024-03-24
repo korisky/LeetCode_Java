@@ -24,7 +24,7 @@ public class AnotherSol {
 
         List<ListNode> needReverseLists = new LinkedList<>();
 
-        // 1. 每k个node进行切分
+        // 1. 每k个node进行切分, 时间复杂度: O(n), 只会遍历一次
         ListNode iter = head;
         ListNode curHead = null;
         while (iter != null) {
@@ -46,7 +46,7 @@ public class AnotherSol {
             needReverseLists.add(curHead);
         }
 
-        // 2. 进行reverse & 拼接 (注意拼接要到最后一位)
+        // 2. 进行reverse & 拼接 (注意拼接要到最后一位), 时间复杂度: O(n), 因为不会超过原链表总长度
         ListNode dum = new ListNode(0);
         iter = dum;
         for (ListNode oldHead : needReverseLists) {
