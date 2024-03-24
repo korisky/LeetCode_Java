@@ -7,7 +7,7 @@ package Ex1_300.Ex211_to_240.Ex221_MaximalSquare;
  */
 
 public class Solution {
-    public int maximalSquare(char[][] matrix) {
+    public static int maximalSquare(char[][] matrix) {
         if (matrix == null || matrix.length == 0)
             return 0;
 
@@ -24,5 +24,14 @@ public class Solution {
             }
         }
         return maxEdgeLength * maxEdgeLength;
+    }
+
+    public static void main(String[] args) {
+        char[] row1 = new char[]{'1', '0', '1', '0', '0'};
+        char[] row2 = new char[]{'1', '0', '1', '1', '1'};
+        char[] row3 = new char[]{'1', '1', '1', '1', '1'};
+        char[] row4 = new char[]{'1', '0', '0', '1', '0'};
+        char[][] matrix = new char[][]{row1, row2, row3, row4};
+        System.out.println(maximalSquare(matrix));
     }
 }
