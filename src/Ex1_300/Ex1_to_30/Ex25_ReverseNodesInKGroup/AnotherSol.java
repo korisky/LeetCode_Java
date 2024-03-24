@@ -26,16 +26,17 @@ public class AnotherSol {
 
         // 1. 每k个node进行切分, 时间复杂度: O(n), 只会遍历一次
         ListNode iter = head;
-        ListNode curHead = null;
+        ListNode remain = null;
         while (iter != null) {
             // 尝试进行分段
             int curLen = 1;
-            curHead = iter;
+            ListNode curHead = iter;
             while (iter != null && curLen++ < k) {
                 iter = iter.next;
             }
-            // 如果已经超出, 直接停止
+            // 如果已经超出, 保存当前part的Head, 跳出
             if (iter == null) {
+                remain = curHead;
                 break;
             }
             // 切分
@@ -57,7 +58,7 @@ public class AnotherSol {
         }
 
         // 3. 拼接剩余
-        iter.next = curHead;
+        iter.next = remain;
         return dum.next;
     }
 
@@ -89,7 +90,8 @@ public class AnotherSol {
 
         AnotherSol use = new AnotherSol();
 
-        ListNode head = use.reverseKGroup(t1, 3);
+//        ListNode head = use.reverseKGroup(t1, 3);
+        ListNode head = use.reverseKGroup(t1, 2);
         while (head != null) {
             System.out.print(head.val + " ");
             head = head.next;
