@@ -18,6 +18,7 @@ public class Solution {
         for (int r = 1; r <= rowLen; r++) {
             for (int c = 1; c <= colLen; c++) {
                 if (matrix[r - 1][c - 1] == '1') {
+                    // 这里的核心就是, 类似2d数组中的matrix为正方形的考虑, 要看[r-1][c], [r][c-1], 以及斜角[r][c]
                     edges[r][c] = 1 + Math.min(Math.min(edges[r - 1][c], edges[r][c - 1]), edges[r - 1][c - 1]);
                     maxEdgeLength = Math.max(maxEdgeLength, edges[r][c]);
                 }
