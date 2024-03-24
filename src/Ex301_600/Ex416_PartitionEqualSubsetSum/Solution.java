@@ -29,7 +29,7 @@ public class Solution {
                     // 大于j, 则跳过该值
                     dp[i][j] = dp[i - 1][j];
                 } else {
-                    // nums[i-1] < j, 考虑是否使用当前值
+                    // nums[i-1] < j, 考虑是否使用当前值, 但是2个都来自于i-1
                     dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i - 1]];
                 }
             }
