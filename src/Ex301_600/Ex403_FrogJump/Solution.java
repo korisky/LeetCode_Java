@@ -4,6 +4,7 @@ public class Solution {
 
     /**
      * 动态规划, 给出的stones是石头的位置, 可以看作连续的 0->n 的河上
+     * 2498 问题第二版
      */
     public boolean canCross(int[] stones) {
 
