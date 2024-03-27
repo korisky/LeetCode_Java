@@ -48,6 +48,6 @@ public class longestPalindrome_DP {
 
     public static void main(String[] args) {
         longestPalindrome_DP use = new longestPalindrome_DP();
-        System.out.println(use.longestPalindrome("aaaa"));
+        System.out.println(use.longestPalindrome("babad"));
     }
 }
