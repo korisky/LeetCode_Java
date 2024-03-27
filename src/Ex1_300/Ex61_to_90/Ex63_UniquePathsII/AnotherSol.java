@@ -52,18 +52,16 @@ public class AnotherSol {
 
         // 初始化第一列
         for (int c = 1; c < m; c++) {
-            // 如果当前不是obstacle, 并且能从左边来, 那么可以到达的way就是1
-            if (obstacleGrid[0][c] == 0 && obstacleGrid[0][c - 1] == 1) {
-                obstacleGrid[0][c] = 1;
-            }
+            // 如果当前不是obstacle, 并且能从左边来, 那么可以到达的way就是1, 否则是0
+            // 这里的置0很关键
+            obstacleGrid[0][c] = (obstacleGrid[0][c] == 0 && obstacleGrid[0][c - 1] == 1) ? 1 : 0;
         }
 
         // 初始化第一行
         for (int r = 1; r < n; r++) {
-            // 如果当前不是obstacle, 并且能从上边来, 那么可以到达的way就是1
-            if (obstacleGrid[r][0] == 0 && obstacleGrid[r - 1][0] == 1) {
-                obstacleGrid[r][0] = 1;
-            }
+            // 如果当前不是obstacle, 并且能从上边来, 那么可以到达的way就是1, 否则是0
+            // 这里的置0很关键
+            obstacleGrid[r][0] = (obstacleGrid[r][0] == 0 && obstacleGrid[r - 1][0] == 1) ? 1 : 0;
         }
 
         // 进行dp遍历
@@ -74,6 +72,7 @@ public class AnotherSol {
                     obstacleGrid[r][c] = obstacleGrid[r - 1][c] + obstacleGrid[r][c - 1];
                 } else {
                     // 这里需要注意, 一定有阻碍, 需要手动将其置0
+                    // 这里的置0很关键
                     obstacleGrid[r][c] = 0;
                 }
             }
