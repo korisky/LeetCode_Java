@@ -3,20 +3,10 @@ package Ex1_300.Ex121_to_150.Ex146_LRUCache;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 使用单向头部, 每次exceed都需要重头找的方式, 会LTE, 必须使用双向的LinkedNode方法
+ */
 public class AnotherSol {
-
-    public static void main(String[] args) {
-        AnotherSol anotherSol = new AnotherSol(2);
-        anotherSol.put(1, 1);
-        anotherSol.put(2, 2);
-        System.out.println(anotherSol.get(1));
-        anotherSol.put(3, 3);
-        System.out.println(anotherSol.get(2));
-        anotherSol.put(4, 4);
-        System.out.println(anotherSol.get(1));
-        System.out.println(anotherSol.get(3));
-        System.out.println(anotherSol.get(4));
-    }
 
     static class Node {
         int key;
@@ -110,5 +100,18 @@ public class AnotherSol {
             }
         }
         return cur;
+    }
+
+    public static void main(String[] args) {
+        AnotherSol anotherSol = new AnotherSol(2);
+        anotherSol.put(1, 1);
+        anotherSol.put(2, 2);
+        System.out.println(anotherSol.get(1));
+        anotherSol.put(3, 3);
+        System.out.println(anotherSol.get(2));
+        anotherSol.put(4, 4);
+        System.out.println(anotherSol.get(1));
+        System.out.println(anotherSol.get(3));
+        System.out.println(anotherSol.get(4));
     }
 }
