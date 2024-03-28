@@ -2,7 +2,7 @@ package Ex301_600.Ex556_NextGreaterElementIII;
 
 public class Solution {
     /**
-     * 题目要求执行转换, 得到同样数字下下一个的值, 执行步骤分为:
+     * 题目要求执行转换, 得到同样数字下下一个的值, 执行步骤分为: (与Ex31类似)
      * 1) 从右往前找, 找到第一个i<i+1, 确认i位置
      * 2) 从i往后找, 找到第一个j使得 j > i, j + 1 < i
      * 3) j和i数字swap

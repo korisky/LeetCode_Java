@@ -16,8 +16,8 @@ public class SolutionDP {
         int n = prices.length;
 
         // 为了方便, 让r2l进行+1
-        int leftMin = prices[0];
-        int rightMax = prices[n - 1];
+        int leftMin = prices[0]; // 记住初始化
+        int rightMax = prices[n - 1]; // 记住初始化
         int[] l2rProfit = new int[n];
         int[] r2lProfit = new int[n + 1]; // 方便处理
 

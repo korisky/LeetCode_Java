@@ -2,9 +2,9 @@ package Ex1_300.Ex181_to_210.Ex200_NumberOfIslands;
 
 public class DfsSolution {
 
-    char[][] using = null;
+    static char[][] using = null;
 
-    public int numIslands(char[][] grid) {
+    public static int numIslands(char[][] grid) {
         using = grid.clone();
         int islandsNum = 0;
         for (int r = 0; r < using.length; r++) {
@@ -18,7 +18,7 @@ public class DfsSolution {
         return islandsNum;
     }
 
-    public int sink(int row, int col) {
+    public static int sink(int row, int col) {
         // for the cases we need to stop:
         // 1. index out of bound
         if (row < 0 || row >= using.length
@@ -37,6 +37,10 @@ public class DfsSolution {
         sink(row, col + 1);
         sink(row, col - 1);
         return 1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(numIslands(new char[][]{{'1'}, {'1'}}));
     }
 
 

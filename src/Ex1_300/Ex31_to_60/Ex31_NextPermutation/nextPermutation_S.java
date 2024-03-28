@@ -10,6 +10,14 @@ The main idea is:
  */
 
 public class nextPermutation_S {
+
+    /**
+     * 跟Ex556, 同样数字的最小permutation题目一样,
+     * 1) 都需要从右到左找到第一个递减的,
+     * 2) 然后在从这个的下一个, 找到刚好大于它并且准备递减的
+     * 3) 两个位置进行互换
+     * 4) left + 1的位置开始, reverse
+     */
     public void nextPermutation(int[] nums) {
 
         // 1. we need to locate where it violate 'DECREASING'
@@ -35,7 +43,7 @@ public class nextPermutation_S {
 
         }
 
-        // 3. after we find out the CORRECT eles for swapping
+        // 3. after we find out the CORRECT elements for swapping
         int temp = nums[peekRight];
         nums[peekRight] = nums[peekLeft];
         nums[peekLeft] = temp;

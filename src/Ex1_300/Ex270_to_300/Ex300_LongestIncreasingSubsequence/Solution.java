@@ -1,5 +1,7 @@
 package Ex1_300.Ex270_to_300.Ex300_LongestIncreasingSubsequence;
 
+import java.util.Arrays;
+
 /**
  * 使用动态规划方法, 从拆分问题的方法开始看, 每一个全长的数组的最长连续递增数组, 都由它 -1 的最长连续数组的来,
  * 那么, 问题可以一直从右往左拆分, 一个指针单向从左向右遍历, 另一个指针一直从0开始向右到指针位置遍历,
@@ -14,14 +16,14 @@ public class Solution {
 
         int max = 0;
         int[] maxLenLIS = new int[nums.length];
+        Arrays.fill(maxLenLIS, 1);
         for (int i = 0; i < nums.length; i++) {
-            // at least 1
-            maxLenLIS[i] = 1;
             for (int j = 0; j < i; j++) {
                 if (nums[j] < nums[i]) {
                     maxLenLIS[i] = Math.max(maxLenLIS[i], maxLenLIS[j] + 1);
                 }
             }
+            // 更新此次i长度的数组, 与最大进行对比
             max = Math.max(max, maxLenLIS[i]);
         }
 
