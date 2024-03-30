@@ -6,7 +6,7 @@ import java.util.Map;
 public class Solution {
 
     /**
-     * 题目需要找出最长子序列, 序列中所有元素不能超出k频次
+     * 题目需要找出最长子序列, 序列中所有元素不能超出k频次, 与Ex2962有相似
      */
     public static int maxSubarrayLength(int[] nums, int k) {
 
