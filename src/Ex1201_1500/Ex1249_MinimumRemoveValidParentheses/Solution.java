@@ -14,7 +14,7 @@ public class Solution {
 
 
     /**
-     * 题目需要构造一个最小修改得来的validString, 使得左右括号位置合理
+     * 题目需要构造一个最小修改得来的validString, 使得左右括号位置合理, (Ex678近似)
      * 核心是使用Stack进行存储, 每次遇到(进行index的存储, 遇到)则尝试pop出来,
      * 如果pop出来的是)那么这两个都不用存到stack, 不合理的index都会存到stack,
      * 最后重新遍历string, 遇到这些还在stack中的肯定就不是合理的
