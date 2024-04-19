@@ -1,4 +1,4 @@
-package Ex1_300.Ex181_to_210.Ex201BitwiseAND;
+package Ex1_300.Ex181_to_210.Ex201_BitwiseAND;
 
 public class Solution {
 
