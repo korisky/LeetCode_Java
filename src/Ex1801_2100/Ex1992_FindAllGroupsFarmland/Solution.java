@@ -28,16 +28,20 @@ public class Solution {
         int endCol = col;
         int maxRow = land.length - 1;
         int maxCol = land[0].length - 1;
+
+
         // find rightest X coordinate
-        while (endRow + 1 <= maxRow && land[endRow + 1][col] == 1) {
-            land[endRow + 1][col] = 0;
-            endRow++;
-        }
-        // find bottom Y coordinate
         while (endCol + 1 <= maxCol && land[row][endCol + 1] == 1) {
             land[row][endCol + 1] = 0;
             endCol++;
         }
+
+        // find bottom Y coordinate
+        while (endRow + 1 <= maxRow && land[endRow + 1][col] == 1) {
+            land[endRow + 1][col] = 0;
+            endRow++;
+        }
+
         // sink all cube surround
         for (int i = row; i <= endRow; i++) {
             for (int j = col; j <= endCol; j++) {
