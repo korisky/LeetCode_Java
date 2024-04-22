@@ -59,8 +59,54 @@ public class Solution {
         return -1;
     }
 
+    /**
+     * 这个方法是双向search, 每次单个search完毕之后, 将另一个倒转, 进行反向search
+     */
+    public static int openLock_2End(String[] deadends, String target) {
+        Set<String> begin = new HashSet<>();
+        Set<String> end = new HashSet<>();
+        Set<String> deadSet = new HashSet<>(Arrays.asList(deadends));
+
+        begin.add("0000");
+        end.add(target);
+
+        int level = 0;
+        Set<String> tmp = new HashSet<>();
+        while (!begin.isEmpty() && !end.isEmpty()) {
+
+            // 每次都从较小的那个开始遍历
+            if (begin.size() > end.size()) {
+                tmp = begin;
+                begin = end;
+                end = tmp;
+            }
+
+            // 类似前面的方式, 同时将可能存在的都进加入到set内部
+            tmp = new HashSet<>();
+            for (String s : begin) {
+                if (end.contains(s)) return level;
+                if (deadSet.contains(s)) continue;
+
+                deadSet.add(s);
+                StringBuilder sb = new StringBuilder(s);
+                for (int i = 0; i < 4; i++) {
+                    char c = sb.charAt(i);
+                    String s1 = sb.substring(0, i) + (c == '9' ? '0' : c - '0' + 1) + sb.substring(i + 1);
+                    String s2 = sb.substring(0, i) + (c == '0' ? '9' : c - '0' - 1) + sb.substring(i + 1);
+                    if (!deadSet.contains(s1)) tmp.add(s1);
+                    if (!deadSet.contains(s2)) tmp.add(s2);
+                }
+            }
+            level++;
+            begin = end;
+            end = tmp;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         System.out.println(openLock_BasicBFS(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
+        System.out.println(openLock_2End(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
     }
 
 
