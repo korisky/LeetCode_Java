@@ -71,7 +71,7 @@ public class Solution {
         end.add(target);
 
         int level = 0;
-        Set<String> tmp = new HashSet<>();
+        Set<String> tmp;
         while (!begin.isEmpty() && !end.isEmpty()) {
 
             // 每次都从较小的那个开始遍历
@@ -91,22 +91,23 @@ public class Solution {
                 StringBuilder sb = new StringBuilder(s);
                 for (int i = 0; i < 4; i++) {
                     char c = sb.charAt(i);
-                    String s1 = sb.substring(0, i) + (c == '9' ? '0' : c - '0' + 1) + sb.substring(i + 1);
-                    String s2 = sb.substring(0, i) + (c == '0' ? '9' : c - '0' - 1) + sb.substring(i + 1);
+                    String s1 = sb.substring(0, i) + (c == '9' ? 0 : c - '0' + 1) + sb.substring(i + 1);
+                    String s2 = sb.substring(0, i) + (c == '0' ? 9 : c - '0' - 1) + sb.substring(i + 1);
                     if (!deadSet.contains(s1)) tmp.add(s1);
                     if (!deadSet.contains(s2)) tmp.add(s2);
                 }
             }
             level++;
-            begin = end;
-            end = tmp;
+            begin = tmp;
         }
         return -1;
     }
 
     public static void main(String[] args) {
-        System.out.println(openLock_BasicBFS(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
-        System.out.println(openLock_2End(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
+//        System.out.println(openLock_BasicBFS(new String[]{"8888"}, "0009"));
+        System.out.println(openLock_2End(new String[]{"8888"}, "0009"));
+//        System.out.println(openLock_BasicBFS(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
+//        System.out.println(openLock_2End(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
     }
 
 
