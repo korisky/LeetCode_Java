@@ -1,4 +1,4 @@
-package Ex861_ScoreAfterFlippingMatrix;
+package Ex601_900.Ex861_ScoreAfterFlippingMatrix;
 
 public class Solution {
 
