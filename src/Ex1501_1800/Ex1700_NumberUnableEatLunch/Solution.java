@@ -1,4 +1,4 @@
-package Ex1700_NumberUnableEatLunch;
+package Ex1501_1800.Ex1700_NumberUnableEatLunch;
 
 public class Solution {
 

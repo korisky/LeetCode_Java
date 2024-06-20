@@ -1,4 +1,4 @@
-package Ex1544_MakeTheStringGreat;
+package Ex1501_1800.Ex1544_MakeTheStringGreat;
 
 public class Solution {
 
