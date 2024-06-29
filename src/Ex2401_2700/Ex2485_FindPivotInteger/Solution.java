@@ -1,4 +1,4 @@
-package Ex2485_FindPivotInteger;
+package Ex2401_2700.Ex2485_FindPivotInteger;
 
 public class Solution {
     /**

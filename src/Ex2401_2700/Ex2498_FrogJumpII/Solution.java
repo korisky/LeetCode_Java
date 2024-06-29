@@ -1,4 +1,4 @@
-package Ex2498_FrogJumpII;
+package Ex2401_2700.Ex2498_FrogJumpII;
 
 public class Solution {
 

@@ -1,4 +1,4 @@
-package Ex1915_NumberWonderfulSubstrings;
+package Ex1801_2100.Ex1915_NumberWonderfulSubstrings;
 
 import java.util.HashMap;
 import java.util.Map;

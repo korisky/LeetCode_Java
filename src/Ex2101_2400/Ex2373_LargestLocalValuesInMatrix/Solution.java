@@ -1,4 +1,4 @@
-package Ex2373_LargestLocalValuesInMatrix;
+package Ex2101_2400.Ex2373_LargestLocalValuesInMatrix;
 
 public class Solution {
 

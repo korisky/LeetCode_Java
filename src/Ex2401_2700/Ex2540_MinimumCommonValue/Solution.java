@@ -1,4 +1,4 @@
-package Ex2540_MinimumCommonValue;
+package Ex2401_2700.Ex2540_MinimumCommonValue;
 
 public class Solution {
 

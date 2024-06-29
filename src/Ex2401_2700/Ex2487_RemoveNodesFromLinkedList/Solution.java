@@ -1,4 +1,4 @@
-package Ex2487_RemoveNodesFromLinkedList;
+package Ex2401_2700.Ex2487_RemoveNodesFromLinkedList;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package Ex2037_MinimumNumberSetEveryOne;
+package Ex1801_2100.Ex2037_MinimumNumberSetEveryOne;
 
 import java.util.Arrays;
 

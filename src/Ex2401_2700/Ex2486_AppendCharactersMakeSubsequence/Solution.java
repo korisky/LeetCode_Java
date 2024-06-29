@@ -1,4 +1,4 @@
-package Ex2486_AppendCharactersMakeSubsequence;
+package Ex2401_2700.Ex2486_AppendCharactersMakeSubsequence;
 
 public class Solution {
 

@@ -1,4 +1,4 @@
-package Ex2073_TimeNeededBuyTickets;
+package Ex1801_2100.Ex2073_TimeNeededBuyTickets;
 
 public class Solution {
 

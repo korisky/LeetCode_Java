@@ -1,4 +1,4 @@
-package Ex2436_MinimumSplitGCD;
+package Ex2401_2700.Ex2436_MinimumSplitGCD;
 
 public class Solution {
 

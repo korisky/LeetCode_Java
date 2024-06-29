@@ -1,4 +1,4 @@
-package Ex2000_ReversePrefixWord;
+package Ex1801_2100.Ex2000_ReversePrefixWord;
 
 import java.util.Stack;
 

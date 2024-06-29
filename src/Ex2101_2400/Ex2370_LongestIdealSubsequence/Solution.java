@@ -1,4 +1,4 @@
-package Ex2370_LongestIdealSubsequence;
+package Ex2101_2400.Ex2370_LongestIdealSubsequence;
 
 public class Solution {
 

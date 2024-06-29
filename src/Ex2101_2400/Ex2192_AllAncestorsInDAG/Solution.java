@@ -1,4 +1,4 @@
-package Ex2192_AllAncestorsInDAG;
+package Ex2101_2400.Ex2192_AllAncestorsInDAG;
 
 import java.util.*;
 

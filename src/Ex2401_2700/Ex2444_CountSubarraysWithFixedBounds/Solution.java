@@ -1,4 +1,4 @@
-package Ex2444_CountSubarraysWithFixedBounds;
+package Ex2401_2700.Ex2444_CountSubarraysWithFixedBounds;
 
 public class Solution {
 
