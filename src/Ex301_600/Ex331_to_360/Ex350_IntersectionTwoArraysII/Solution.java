@@ -35,6 +35,23 @@ public class Solution {
         return intersectList.stream().mapToInt(theInt -> theInt).toArray();
     }
 
+    /**
+     * 由于题目限制了num[i] <= 1000, 直接用统计频率的类似方式直接操作, 速度可以加快很多
+     */
+    public static int[] anotherIntersect(int[] nums1, int[] nums2) {
+        int[] arr = new int[1000];
+        for (int num : nums1) {
+            arr[num]++;
+        }
+        List<Integer> list = new LinkedList<>();
+        for (int num : nums2) {
+            if (arr[num]-- > 0) {
+                list.add(num);
+            }
+        }
+        return list.stream().mapToInt(i -> i).toArray();
+    }
+
 
     /**
      * 这个方法思路对的, 但是遇到有重复元素就不行了
