@@ -39,6 +39,28 @@ public class Solution {
         return sumPreHead.next;
     }
 
+    /**
+     * 递归的方式, 对每一段0到0节点进行merge
+     */
+    public static ListNode mergeNodesRecursive(ListNode head) {
+        // 跳过第一个0
+        head = head.next;
+        if (head == null) {
+            return head;
+        }
+        // 聚合
+        ListNode iter = head;
+        int sum = 0;
+        while (iter.val != 0) {
+            sum += iter.val;
+            iter = iter.next;
+        }
+        // 更新
+        head.val = sum;
+        head.next = mergeNodes(iter);
+        return head;
+    }
+
     public static void main(String[] args) {
         ListNode n0 = new ListNode(0);
         ListNode n1 = new ListNode(2, n0);
@@ -53,6 +75,12 @@ public class Solution {
         while (newHead != null) {
             System.out.println(newHead.val);
             newHead = newHead.next;
+        }
+
+        ListNode newHead2 = mergeNodesRecursive(n7);
+        while (newHead2 != null) {
+            System.out.println(newHead2.val);
+            newHead2 = newHead2.next;
         }
     }
 
