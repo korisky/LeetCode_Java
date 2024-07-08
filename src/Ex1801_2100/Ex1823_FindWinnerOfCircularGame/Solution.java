@@ -14,6 +14,17 @@ public class Solution {
         }
     }
 
+    /**
+     * 使用取模的方法
+     */
+    public int findTheWinner_Modular(int n, int k) {
+        int ans = 0;
+        for (int i = 2; i <= n; i++) {
+            ans = (ans + k) % i;
+        }
+        return ans + 1;
+    }
+
 
     /**
      * 尝试使用模拟的方式, 借助链表
