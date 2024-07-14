@@ -47,7 +47,13 @@ public class Solution {
 
             // 次数处理
             if (Character.isDigit(curChar)) {
-                curCount = Character.getNumericValue(curChar);
+                // 次数最大化 -> 向左匹配
+                StringBuilder digitBuilder = new StringBuilder(String.valueOf(curChar));
+                while (Character.isDigit(charArr[i - 1])) {
+                    digitBuilder.insert(0, charArr[i - 1]);
+                    i--;
+                }
+                curCount = Integer.parseInt(digitBuilder.toString());
                 continue;
             }
 
@@ -78,5 +84,6 @@ public class Solution {
     public static void main(String[] args) {
 //        System.out.println(countOfAtoms("K4(ON(SO3)2)2"));
         System.out.println(countOfAtoms("Na2ZnRb5(PuS11(SH)6W)2(H2S)Unu8Pu"));
+//        System.out.println(countOfAtoms("Be32"));
     }
 }
