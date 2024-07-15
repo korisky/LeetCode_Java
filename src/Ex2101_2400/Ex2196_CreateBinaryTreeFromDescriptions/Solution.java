@@ -24,6 +24,41 @@ public class Solution {
     }
 
     /**
+     * 相较于通过差集找到root后递归构建, 直接先构建最后判断root是快的一种方式
+     */
+    public TreeNode createBinaryTree_Faster(int[][] descriptions) {
+
+        Map<Integer, TreeNode> nodeMap = new HashMap<>();
+        Set<Integer> childSet = new HashSet<>();
+
+        for (int[] description : descriptions) {
+            int parentVal = description[0];
+            int childVal = description[1];
+            boolean isLeft = (description[2] == 1);
+
+            if (!nodeMap.containsKey(parentVal)) {
+                nodeMap.put(parentVal, new TreeNode(parentVal));
+            }
+            if (!nodeMap.containsKey(childVal)) {
+                nodeMap.put(childVal, new TreeNode(childVal));
+            }
+            if (isLeft) {
+                nodeMap.get(parentVal).left = nodeMap.get(childVal);
+            } else {
+                nodeMap.get(parentVal).right = nodeMap.get(childVal);
+            }
+            childSet.add(childVal);
+        }
+        for (TreeNode node : nodeMap.values()) {
+            if (!childSet.contains(node.val)) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+
+    /**
      * 题目目标希望从description中重新构建起来整颗Tree
      */
     public TreeNode createBinaryTree(int[][] descriptions) {
