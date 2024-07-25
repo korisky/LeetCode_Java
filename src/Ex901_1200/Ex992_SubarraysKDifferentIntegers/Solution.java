@@ -1,4 +1,4 @@
-package Ex601_900.Ex992_SubarraysKDifferentIntegers;
+package Ex901_1200.Ex992_SubarraysKDifferentIntegers;
 
 public class Solution {
 
