@@ -12,4 +12,15 @@ public class Solution {
         }
         return sum;
     }
+
+    public static int countSeniorsFaster(String[] details) {
+        int sum = 0;
+        for (String detail : details) {
+            char[] charArray = detail.toCharArray();
+            if ((charArray[11] - '0') * 10 + (charArray[12] - '0') > 60) {
+                sum++;
+            }
+        }
+        return sum;
+    }
 }
