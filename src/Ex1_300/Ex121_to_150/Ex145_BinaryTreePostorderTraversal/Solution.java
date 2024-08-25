@@ -7,7 +7,6 @@ import java.util.Stack;
 /*
     The idea is about, after we traversed the node, and add it's left and right nodes, we should set them to null
  */
-
 public class Solution {
     public class TreeNode {
         int val;
@@ -28,6 +27,9 @@ public class Solution {
         }
     }
 
+    /**
+     * Non-recursive solution -> using Stack
+     */
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
@@ -51,4 +53,21 @@ public class Solution {
         }
         return res;
     }
+
+    public List<Integer> postorderTraversalRecursive(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        postTraverseHelper(root, result);
+        return result;
+    }
+
+    private void postTraverseHelper(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return;
+        }
+        postTraverseHelper(root.left, list);
+        postTraverseHelper(root.right, list);
+        list.add(root.val);
+    }
+
+
 }
