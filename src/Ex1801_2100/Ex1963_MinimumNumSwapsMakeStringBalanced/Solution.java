@@ -27,4 +27,28 @@ public class Solution {
         }
         return (unbalanced + 1) / 2;
     }
+
+
+    /**
+     * 不用stack速度更快
+     */
+    public int minSwapsFaster(String s) {
+        int opening = 0;
+        int unbalanced = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '[') {
+                // handler [
+                opening++;
+            } else {
+                // handler ]
+                if (opening > 0) {
+                    opening--;
+                } else {
+                    unbalanced++;
+                }
+            }
+        }
+        return (unbalanced + 1) / 2;
+    }
 }
