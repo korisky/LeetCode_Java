@@ -1,4 +1,4 @@
-package Ex1942_TheNumOfSmallestUnoccupiedChair;
+package Ex1801_2100.Ex1942_TheNumOfSmallestUnoccupiedChair;
 
 import java.util.*;
 
