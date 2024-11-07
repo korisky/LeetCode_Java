@@ -2,6 +2,37 @@ package Ex2275_LargestCombinationWithBitwiseANDGreaterThanZero;
 
 public class Solution {
 
+
+    /**
+     * 更快的方法在于, 只需要统计每个ele的bit的位置, 将其放入一个32的数组, 最后统计哪一个bit更多就可以了
+     */
+    public static int largestCombination_faster(int[] candidates) {
+        // 1. 进行每个bit位置的统计
+        int[] bitArr = new int[32];
+        for (int candidate : candidates) {
+            count(candidate, bitArr);
+        }
+        // 2. 找到统计频率最大的, 就是最大共同&又不是0的数目
+        int max = 0;
+        for (int cut : bitArr) {
+            max = Math.max(max, cut);
+        }
+        return max;
+    }
+
+    private static void count(int ele, int[] bits) {
+        // 从最高的bit开始, 是为了保持从左到右的自然读数顺序
+        int j = 31;
+        while (ele > 0) {
+            // array是从右到左, 计算也是, 用最低位开始计算进行记数
+            bits[j] += (ele & 1);
+            // 除2 -> 向右移动1位
+            ele >>= 1;
+            j--;
+        }
+    }
+
+
     /**
      * 题目希望尽可能的使用更多的元素进行&操作, 并且得到的结果可以是>0
      */
