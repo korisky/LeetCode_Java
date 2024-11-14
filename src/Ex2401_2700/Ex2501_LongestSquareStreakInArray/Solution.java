@@ -1,4 +1,4 @@
-package Ex2501_LongestSquareStreakInArray;
+package Ex2401_2700.Ex2501_LongestSquareStreakInArray;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package Ex2684_MaximumNumberOfMovesInGrid;
+package Ex2401_2700.Ex2684_MaximumNumberOfMovesInGrid;
 
 public class Solution {
 

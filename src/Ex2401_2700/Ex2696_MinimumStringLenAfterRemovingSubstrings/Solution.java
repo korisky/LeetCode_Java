@@ -1,4 +1,4 @@
-package Ex2696_MinimumStringLenAfterRemovingSubstrings;
+package Ex2401_2700.Ex2696_MinimumStringLenAfterRemovingSubstrings;
 
 public class Solution {
 

@@ -1,4 +1,4 @@
-package Ex2275_LargestCombinationWithBitwiseANDGreaterThanZero;
+package Ex2101_2400.Ex2275_LargestCombinationWithBitwiseANDGreaterThanZero;
 
 public class Solution {
 
