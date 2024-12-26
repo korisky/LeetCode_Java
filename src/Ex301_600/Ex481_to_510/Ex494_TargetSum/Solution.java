@@ -1,4 +1,4 @@
-package Ex494_TargetSum;
+package Ex301_600.Ex481_to_510.Ex494_TargetSum;
 
 /**
  * Brute-force method -> go through all possibilities
