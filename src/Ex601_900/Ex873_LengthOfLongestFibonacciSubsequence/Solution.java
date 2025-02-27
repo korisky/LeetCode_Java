@@ -2,8 +2,8 @@ package Ex601_900.Ex873_LengthOfLongestFibonacciSubsequence;
 
 /*
     Idea from LeetCode:
-        if we let: a + b = c, the we use a 2d array:
-        [b][c] to represent longest Fibonacci sequence length till c
+        if we let: a + b = c, then we use a 2d array:
+        [b][c] to represent the longest Fibonacci sequence length till c
         [b][c] = [a][b] + 1.
 
         Also, we can use 3-sum method here, because we wanna find: A + B == C in correct order
