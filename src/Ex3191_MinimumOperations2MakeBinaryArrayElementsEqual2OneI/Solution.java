@@ -22,4 +22,22 @@ public class Solution {
         }
         return count;
     }
+
+    public int minOperations_Faster(int[] nums) {
+        int count = 0;
+        for (int i = 2; i < nums.length; i++) {
+            if (nums[i - 2] == 0) {
+                count++;
+                nums[i - 2] = nums[i - 2] ^ 1;
+                nums[i - 1] = nums[i - 1] ^ 1;
+                nums[i] = nums[i] ^ 1;
+            }
+        }
+        // check remaining are all 1 or not
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        return sum == nums.length ? count : -1;
+    }
 }
