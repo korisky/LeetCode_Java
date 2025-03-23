@@ -1,0 +1,63 @@
+package Ex1801_2100.Ex1976_NumberOfWaysArriveDestination;
+
+import java.util.*;
+
+public class Solution {
+
+    /**
+     * Dijkstra, 目标是找到每个点之间的所有最短路径
+     */
+    public int countPaths(int n, int[][] roads) {
+
+        final int MOD = 1_000_000_007;
+
+        List<List<int[]>> graph = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
+        }
+        for (int[] road : roads) {
+            int startNode = road[0], endNode = road[1], travelTime = road[2];
+            graph.get(startNode).add(new int[]{endNode, travelTime});
+            graph.get(endNode).add(new int[]{startNode, travelTime});
+        }
+
+        PriorityQueue<long[]> minHeap = new PriorityQueue<>(
+                Comparator.comparingLong(a -> a[0])
+        );
+
+        long[] shortestTime = new long[n];
+        Arrays.fill(shortestTime, Long.MAX_VALUE);
+        int[] pathCount = new int[n];
+
+        shortestTime[0] = 0;
+        pathCount[0] = 1;
+
+        minHeap.offer(new long[]{0, 0}); // time, node
+
+        while (!minHeap.isEmpty()) {
+            long[] top = minHeap.poll();
+            long currTime = top[0];
+            int currNode = (int) top[1];
+
+            // skip longer distances
+            if (currTime > shortestTime[currNode]) {
+                continue;
+            }
+
+            for (int[] neighbor : graph.get(currNode)) {
+                int neighborNode = neighbor[0], roadTime = neighbor[1];
+
+                if (currTime + roadTime < shortestTime[neighborNode]) {
+                    shortestTime[neighborNode] = currTime + roadTime;
+                    pathCount[neighborNode] = pathCount[currNode];
+                    minHeap.offer(new long[]{shortestTime[neighborNode], neighborNode});
+
+                } else if (currTime + roadTime == shortestTime[neighborNode]) {
+                    pathCount[neighborNode] = (pathCount[neighborNode] + pathCount[currNode]) % MOD;
+                }
+
+            }
+        }
+        return pathCount[n - 1];
+    }
+}
